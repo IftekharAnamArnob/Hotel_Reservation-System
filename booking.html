@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Noorjahan Grand Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            background-image: url('images/Noorjahan.jpg'); /* Replace 'background.jpg' with your image file name and path */
+    background-size: cover;
+    background-repeat: no-repeat;
+            
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Hotel Noorjahan Grand Booking</h2>
+        <form action="#" method="post">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+
+            <label for="spouseName">Spouse Name</label>
+            <input type="text" id="spouseName" name="spouseName">
+
+            <label for="visaNo">Visa Number</label>
+            <input type="text" id="visaNo" name="visaNo" required>
+
+            <label for="passportNo">Passport Number</label>
+            <input type="text" id="passportNo" name="passportNo" required>
+
+            <label for="nidNo">NID Number</label>
+            <input type="text" id="nidNo" name="nidNo" required>
+
+            <label for="nationality">Nationality</label>
+            <input type="text" id="nationality" name="nationality" required>
+
+            <label for="arrivalDate">Date of Arrival</label>
+            <input type="date" id="arrivalDate" name="arrivalDate" required>
+
+            <label for="departureDate">Date of Departure</label>
+            <input type="date" id="departureDate" name="departureDate" required>
+
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="mobile">Mobile</label>
+            <input type="tel" id="mobile" name="mobile" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
