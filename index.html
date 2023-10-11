@@ -42,8 +42,53 @@
                 <li><a href = "#customers">customers</a></li>
             </ul>
             <!-- <button class = "btn sign-up">sign up</button> -->
-            <a href="test.html">Sign-up</a>
-            <button class = "btn log-in">log in</button>
+            <style>
+                .button-container {
+                    display: flex;
+                }
+            
+                .custom-button {
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-decoration: none;
+                    padding: 15px 30px;
+                    border-radius: 8px;
+                    background-color: yellow;
+                    color: black;
+                    border: 2px solid #ffd700;
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                    margin-right: 20px; /* Adds space between buttons */
+                }
+            
+                .custom-button:last-child {
+                    margin-right: 0;
+                }
+            
+                .custom-button:hover {
+                    background-color: #ffd700;
+                    color: black;
+                    transform: scale(1.05);
+                    border-color: #ffd700;
+                }
+            </style>
+            
+            <div class="button-container">
+                <form action="test.html">
+                    <button class="custom-button" type="submit">
+                        Sign-up
+                    </button>&nbsp;&nbsp;   
+                </form>
+            
+                <form action="login.html">
+                    <button class="custom-button" type="submit">
+                        Log in
+                    </button>
+                </form>
+            </div>
+            
+            
+            
         </div>
         <!-- end of side navbar -->
 
