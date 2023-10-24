@@ -29,6 +29,16 @@ body{
     margin: 15px auto;
     cursor: pointer;
     transition: var(--transition);
+
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
 }
 .btn:hover{
     opacity: 0.85;
@@ -54,7 +64,7 @@ img{
 
 /* header */
 .header{
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("images/Noorjahan.jpg") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("/public/images/Noorjahan.jpg") center/cover no-repeat;
     min-height: 100vh;
     color: #fff;
     padding: 25px;
@@ -238,7 +248,7 @@ img{
 
 /* booking form */
 .book{
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("images/banner-img.jpg") center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("/public/images/banner-img.jpg") center/cover no-repeat;
     color: #fff;
     padding: 40px 60px;
 }
@@ -392,7 +402,7 @@ img{
 .customers{
     margin-top: 40px;
     padding: 40px 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/customer-banner.jpg") center/cover no-repeat fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/public/images/customer-banner.jpg") center/cover no-repeat fixed;
 }
 .customer{
     background: #fff;
@@ -539,4 +549,31 @@ a:hover {
     color: white;
     text-decoration: underline;
 }
+
+.cancel-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cancel-button {
+    background-color: #ff0000;
+    width: 300px;
+    color: white;
+    padding: 20px 100px; /* Adjust padding to provide more space for the text */
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #cc0000;
+}
+
+
 

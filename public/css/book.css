@@ -1,0 +1,116 @@
+.form-style-9 {
+    max-width: 450px;
+    background: black;
+    padding: 30px;
+    margin: 50px auto;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid #305A72;
+}
+
+.form-style-9 ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.form-style-9 ul li {
+    display: block;
+    margin-bottom: 10px;
+    min-height: 35px;
+}
+
+.form-style-9 ul li .field-style {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 20px;
+    outline: none;
+    border: 1px solid #B0CFE0;
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    font-size: 18px; /* Increase font size for input fields */
+    min-height: 60px; /* Increase the height of input fields */
+    margin-bottom: 20px; /* Increase bottom margin for form elements */
+}
+
+.form-style-9 ul li .field-style:focus {
+    box-shadow: 0 0 5px #B0CFE0;
+    border: 1px solid #B0CFE0;
+}
+
+.form-style-9 ul li .field-split {
+    width: 49%;
+}
+
+.form-style-9 ul li input.align-left {
+    float: left;
+}
+
+.form-style-9 ul li input.align-right {
+    float: right;
+}
+
+.form-style-9 ul li input[type="submit"] {
+    -moz-box-shadow: inset 0px 1px 0px 0px #3985B1;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #3985B1;
+    box-shadow: inset 0px 1px 0px 0px #3985B1;
+    background-color: #216288;
+    border: 1px solid #17445E;
+    display: inline-block;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 8px 18px;
+    text-decoration: none;
+    font: 12px Arial, Helvetica, sans-serif;
+}
+
+.form-style-9 ul li input[type="submit"]:hover {
+    background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+    background-color: #28739E;
+}
+
+.bigger-form {
+    width: 70%; /* Set the form width to 70% of the screen width */
+    max-width: 600px; /* Set a maximum width for the form */
+    margin: 0 auto; /* Center the form horizontally */
+}
+.bigger-form h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.bigger-form .field-style {
+    padding: 15px; /* Increase padding for input fields */
+    font-size: 16px; /* Increase font size for input fields */
+    min-height: 50px; /* Increase the height of input fields */
+    margin-bottom: 15px; /* Increase bottom margin for form elements */
+}
+
+.bigger-form input[type="submit"] {
+    padding: 15px 25px; /* Increase padding for the submit button */
+    font-size: 18px; /* Increase font size for the submit button */
+}
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 80px; /* Increase the bottom margin for additional space */
+    font-size: 80px; /* Increase the font size for the h1 element */
+}
+
+.form-style-9 input[type="submit"] {
+    padding: 20px 30px; /* Increase padding for the submit button */
+    font-size: 20px; /* Increase font size for the submit button */
+}
+

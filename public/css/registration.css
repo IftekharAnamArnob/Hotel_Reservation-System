@@ -11,25 +11,25 @@ body {
     width: 300px;
 }
 
-.reservation-form {
+.registration-form {
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.reservation-form h2 {
+.registration-form h2 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.reservation-form label,
-.reservation-form input {
+.registration-form label,
+.registration-form input {
     display: block;
     margin-bottom: 10px;
 }
 
-.reservation-form input {
+.registration-form input {
     width: calc(100% - 20px);
     padding: 10px;
     font-size: 16px;
@@ -37,7 +37,7 @@ body {
     border-radius: 5px;
 }
 
-.reservation-form button {
+.registration-form button {
     background-color: #4caf50;
     color: white;
     border: none;
@@ -47,12 +47,12 @@ body {
     cursor: pointer;
 }
 
-.reservation-form button:hover {
+.registration-form button:hover {
     background-color: #45a049;
 }
 
 body {
-    background-image: url('images/piano.jpg'); /* Replace 'background.jpg' with your image file name and path */
+    background-image: url('/public/images/piano.jpg'); /* Replace 'background.jpg' with your image file name and path */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* This keeps the background image fixed while scrolling */
@@ -60,11 +60,7 @@ body {
     font-family: Arial, sans-serif; /* Set the font family for the text */
 }
 
-.container {
-    /* Your existing styles for the container */
-}
-
-.reservation-form {
+.registration-form {
     /* Your existing styles for the form */
     background-color: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background color for better readability */
     padding: 20px; /* Add padding to the form for better spacing */
@@ -73,3 +69,10 @@ body {
 }
 
 /* Additional styles for form elements if needed */
+
+/* Add this CSS to your existing styles */
+
+
+
+
+

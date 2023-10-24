@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>HOTEL NOORJAHAN GRAND</title>
+        <title>HOTEL GP</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="/public/css/index.css">
         <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
-        <link rel = "icon" href = "images/logo.png" type = "image/png">
+        <link rel = "icon" href = "/public/images/logo.png" type = "image/png">
     </head>
     <body>
         
@@ -46,6 +46,27 @@
                 .button-container {
                     display: flex;
                 }
+
+
+                /* Add these styles to your existing CSS file */
+
+.cancel-button {
+    display: inline-block;
+    background-color: #e72412;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+    background-color: #dd463c;
+}
+
+                
             
                 .custom-button {
                     font-size: 18px;
@@ -74,7 +95,7 @@
             </style>
             
             <div class="button-container">
-                <form action="test.html">
+                <form action="registration.html">
                     <button class="custom-button" type="submit">
                         Sign-up
                     </button>&nbsp;&nbsp;   
@@ -162,38 +183,30 @@
         </section>
 
         <div class = "book">
+            <form class = "book-form">
+                <div class = "form-item">
+                    <label for = "checkin-date">Check In Date: </label>
+                    <input type = "date" id = "chekin-date">
+                </div>
+                    <div class = "form-item">
+                    <label for = "checkout-date">Check Out Date: </label>
+                    <input type = "date" id = "chekout-date">
+                </div>            
+                <div class = "form-item">
+                    <label for = "rooms">Rooms: </label>
+                    <input type = "number" min = "1" value = "1" id = "rooms">
+                </div>
+                <div class="form-item">
+                    <a href="book.html" class="btn">Book Now</a>
+                </div>
             
-                <form class="book-form" action="booking.html">
-                    <form class = "book-form">
-                        <div class = "form-item">
-                            <label for = "checkin-date">Check In Date: </label>
-                            <input type = "date" id = "chekin-date">
-                        </div>
-                        <div class = "form-item">
-                            <label for = "checkout-date">Check Out Date: </label>
-                            <input type = "date" id = "chekout-date">
-                        </div>
-                        <div class = "form-item">
-                            <label for = "adult">Adults: </label>
-                            <input type = "number" min = "1" value = "1" id = "adult">
-                        </div>
-                        <div class = "form-item">
-                            <label for = "children">Children: </label>
-                            <input type = "number" min = "1" value = "1" id = "children">
-                        </div>
-                        <div class = "form-item">
-                            <label for = "rooms">Rooms: </label>
-                            <input type = "number" min = "1" value = "1" id = "rooms">
-                        </div>
-                        <div class = "form-item">
-                            <input type = "submit" class = "btn" value = "Book Now">
-                        </div>
-                    </form>
-
-                  
-                </form>
+                <div class="cancel-button-container">
+                    <a href="cancel_booking.html" class="cancel-button">Cancel Booking</a>
+                </div>
             
-            
+                
+                 
+            </form>
         </div>
 
         <section class = "rooms sec-width" id = "rooms">
@@ -204,7 +217,7 @@
                 <!-- single room -->
                 <article class = "room">
                     <div class = "room-image">
-                        <img src = "images/boutique1.jpg" alt = "room image">
+                        <img src = "/public/images/boutique1.jpg" alt = "room image">
                     </div>
                     <div class = "room-text">
                     <h3>BOUTIQUE Room</h3>
@@ -234,7 +247,7 @@
                 <!-- single room -->
                 <article class = "room">
                     <div class = "room-image">
-                        <img src = "images/grand_suite.jpg" alt = "room image">
+                        <img src = "/public/images/grand_suite.jpg" alt = "room image">
                     </div>
                     <div class = "room-text">
                         <h3>EXECUTIVE DOUBLE</h3>
@@ -265,7 +278,7 @@
                 <!-- single room -->
                 <article class = "room">
                     <div class = "room-image">
-                        <img src = "images/family_suite1.jpg" alt = "room image">
+                        <img src = "/public/images/family_suite1.jpg" alt = "room image">
                     </div>
                     <div class = "room-text">
                         <h3>FAMILY SUITE</h3>
@@ -292,6 +305,97 @@
                     </div>
                 </article>
                 <!-- end of single room -->
+
+                <article class = "room">
+                    <div class = "room-image">
+                        <img src = "/public/images/boutique1.jpg" alt = "room image">
+                    </div>
+                    <div class = "room-text">
+                    <h3>EXECUTIVE TWIN</h3>
+                        <ul>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Safety Vault
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Flat screen TV
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Bathroom amenities
+                            </li>
+                        </ul>
+                        <p>22 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.</p>
+                        
+                        <p class = "rate">
+                            <span>BDT 6,200.000 /</span> Per Night
+                        </p>
+                        <button type = "button" class = "btn">book now</button>
+                    </div>
+                </article>
+                <!-- end of Executive twin -->
+                
+                <article class = "room">
+                    <div class = "room-image">
+                        <img src = "/public/images/boutique1.jpg" alt = "room image">
+                    </div>
+                    <div class = "room-text">
+                    <h3>PREMIER TWIN</h3>
+                        <ul>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Coffee and tea
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Hair dryer
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Aircondition
+                            </li>
+                        </ul>
+                        <p>30 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.</p>
+                        
+                        <p class = "rate">
+                            <span>BDT 8,500.000 /</span> Per Night
+                        </p>
+                        <button type = "button" class = "btn">book now</button>
+                    </div>
+                </article>
+                <!-- end of Executive twin -->
+                
+                <article class = "room">
+                    <div class = "room-image">
+                        <img src = "/public/images/boutique1.jpg" alt = "room image">
+                    </div>
+                    <div class = "room-text">
+                    <h3>GRAND SUITE</h3>
+                        <ul>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                50" Flat screen TV
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Jacuzzi
+                            </li>
+                            <li>
+                                <i class = "fas fa-arrow-alt-circle-right"></i>
+                                Marbel Top Wash
+                            </li>
+                        </ul>
+                        <p>40 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.</p>
+                        
+                        <p class = "rate">
+                            <span>BDT 18,000.000 /</span> Per Night
+                        </p>
+                        <button type = "button" class = "btn">book now</button>
+                    </div>
+                </article>
+                <!-- end of Executive twin -->
+                
             </div>
         </section>
 
@@ -313,7 +417,7 @@
                         </div>
                         <h3>We Loved it</h3>
                         <p>"My stay at Hotel Noorjahan Grand was fantastic! The room was modern and comfortable, the staff was friendly and helpful, and the location was perfect. I especially loved the convenient access to major attractions. Highly recommended for a great stay in Sylhet!"</p>
-                        <img src = "images/cus1.jpg" alt = "customer image">
+                        <img src = "/public/images/cus1.jpg" alt = "customer image">
                         <span>Liam Nisson, London</span>
                     </div>
                     <!-- end of single customer -->
@@ -328,7 +432,7 @@
                         </div>
                         <h3>Comfortable Living</h3>
                         <p>"I had an amazing experience at Hotel Noorjahan Grand. The room was stylish and cozy, and the service was top-notch. The central location made it easy to explore the city. I'll definitely be coming back!"</p>
-                        <img src = "images/cus2.jpg" alt = "customer image">
+                        <img src = "/public/images/cus2.jpg" alt = "customer image">
                         <span> Linda Johnson, USA</span>
                     </div>
                     <!-- end of single customer -->
@@ -343,7 +447,7 @@
                         </div>
                         <h3>Nice Place</h3>
                         <p>"Hotel Noorjahan Grand is a delightful oasis in the heart of Sylhet. The ambiance is inviting, the rooms are elegant, and the staff is incredibly warm and accommodating. It truly feels like a home away from home, making it a truly nice place to stay."</p>
-                        <img src = "images/cus3.jpg" alt = "customer image">
+                        <img src = "/public/images/cus3.jpg" alt = "customer image">
                         <span>Jack Huggeman, Australia</span>
                     </div>
                     <!-- end of single customer -->
@@ -418,6 +522,6 @@
         </footer>
         <!-- end of footer -->
         
-        <script src="script.js"></script>
+        <script src="/public/script.js"></script>
     </body>
 </html>
