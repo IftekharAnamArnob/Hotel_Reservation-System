@@ -1,0 +1,11 @@
+node_modules
+|-public
+|  |-css
+|  |-html
+|  |-images
+|-.gitignore
+|-database.js
+|-package-lock.json
+|-package.json
+|-script.js
+|-server.js
