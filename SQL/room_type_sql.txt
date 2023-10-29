@@ -1,0 +1,9 @@
+INSERT INTO room_type 
+(room_type_id, type_name, description, price_per_night, maximum_boarders)
+VALUES
+(1, "BOUTIQUE ROOM", "20 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.", 3150, 2),
+(2, "EXECUTIVE DOUBLE", "25 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.", 4200, 2),
+(3, "FAMILY SUITE", "30 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom", 7000, 3),
+(4, "EXECUTIVE TWIN", "22 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.", 6200, 2),
+(5, "PREMIER TWIN", "30 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.", 8500, 3),
+(6, "GRAND SUITE", "40 Sq.m. rooms, city views, integrated climate control, free Wi-Fi, electronic safe capable of holding a laptop, flat screen TV, bathrobes, hair dryer, luxurious bathroom.", 18000, 4)

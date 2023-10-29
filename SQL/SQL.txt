@@ -1,0 +1,54 @@
+CREATE TABLE admin (
+	user_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_password VARCHAR(255),
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    admin_type VARCHAR(255),
+    admin_image BLOB
+);
+CREATE TABLE guest (
+	guest_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    age INT,
+    nid_no VARCHAR(255),
+    passport_no VARCHAR(255),
+    nationality VARCHAR(255),
+    occupation VARCHAR(255),
+    contact_no VARCHAR(255),
+    email VARCHAR(255),
+    guest_password VARCHAR(255),
+    guest_image BLOB,
+    card_no VARCHAR(20)
+);
+CREATE TABLE room_type (
+	room_type_id INT PRIMARY KEY,
+    type_name VARCHAR(255),
+    description VARCHAR(400),
+    price_per_night INT,
+    maximum_boarders INT,
+    room_image BLOB
+);
+CREATE TABLE reservation (
+	reservation_id INT PRIMARY KEY AUTO_INCREMENT,
+    guest_id INT,
+    check_in_date DATE,
+    check_out_date DATE,
+    applying_date DATE,
+    reservation_status VARCHAR(20),
+    FOREIGN KEY (guest_id) REFERENCES guest(guest_id)
+);
+CREATE TABLE room (
+	room_id INT PRIMARY KEY,
+    room_type_id INT,
+    busy_from DATE,
+    busy_upto DATE,
+    is_available_now INT,
+    FOREIGN KEY (room_type_id) REFERENCES room_type(room_type_id)
+);
+CREATE TABLE reservation_rooms (
+	reservation_id INT,
+    room_id INT,
+    FOREIGN KEY (reservation_id) REFERENCES reservation(reservation_id),
+    FOREIGN KEY (room_id) REFERENCES room(room_id)
+);

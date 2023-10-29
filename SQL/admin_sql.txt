@@ -1,0 +1,7 @@
+INSERT INTO admin
+(user_id, user_password, first_name, last_name, admin_type)
+VALUES
+(1, "123", "Shattik", "Bandyopadhyaa", "General Manager"),
+(2, "123", "Iftekhar", "Anam", "Front Office Manager"),
+(3, "123", "Naiem", "Arafat", "Housekeeping Manager"),
+(4, "123", "Sadia", "Islam", "Operations Manager")
