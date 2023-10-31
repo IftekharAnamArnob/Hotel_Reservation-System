@@ -95,16 +95,12 @@
             </style>
             
             <div class="button-container">
-                <form action="/public/html/registration.html">
-                    <button class="custom-button" type="submit">
-                        Sign-up
-                    </button>&nbsp;&nbsp;   
+                <form method="GET">
+                    <a class="custom-button" href="/registration">Sign up</a>
                 </form>
             
-                <form action="/public/html/login.html">
-                    <button class="custom-button" type="submit">
-                        Log in
-                    </button>
+                <form method="GET">
+                    <a class="custom-button" href="/login">Login</a>
                 </form>
             </div>
             
@@ -184,7 +180,7 @@
 
         <div class = "book">
             <form class = "book-form">
-                <div class = "form-item">
+                <!-- <div class = "form-item">
                     <label for = "checkin-date">Check In Date: </label>
                     <input type = "date" id = "chekin-date">
                 </div>
@@ -195,13 +191,17 @@
                 <div class = "form-item">
                     <label for = "rooms">Rooms: </label>
                     <input type = "number" min = "1" value = "1" id = "rooms">
-                </div>
+                </div> -->
                 <div class="form-item">
-                    <a href="/public/html/book.html" class="btn">Book Now</a>
+                    <form method="GET">
+                        <a class="custom-button" href="/room_availability">Book now</a>
+                    </form>
                 </div>
             
                 <div class="cancel-button-container">
-                    <a href="/public/html/cancel_booking.html" class="cancel-button">Cancel Booking</a>
+                    <form method="GET">
+                        <a class="custom-button" href="/cancel_booking">Cancel Booking</a>
+                    </form>
                 </div>
             
                 

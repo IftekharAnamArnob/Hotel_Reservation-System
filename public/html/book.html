@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,45 +14,58 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url("/public/images/Backdoor.jpg"); /* Replace 'background.jpg' with your image file name and path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* This keeps the background image fixed while scrolling */
-    color:white; /* Set text color to contrast with the background */
-    font-family: Arial, sans-serif; /* Set the font family for the text */
+            background-image: url("/public/images/Backdoor.jpg");
+            /* Replace 'background.jpg' with your image file name and path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* This keeps the background image fixed while scrolling */
+            color: white;
+            /* Set text color to contrast with the background */
+            font-family: Arial, sans-serif;
+            /* Set the font family for the text */
         }
     </style>
     <link rel="stylesheet" href="/public/css/book.css">
 </head>
+
 <body>
 
 
     <h1>Confirm your booking</h1>
 
-    <form class="form-style-9 bigger-form" action="Choose_payment.html" method="post">
+    <form class="form-style-9 bigger-form" action="/public/html/Choose_payment.html" method="post">
         <ul>
             <li>
-                <input type="text" name="first-name" class="field-style field-split align-left" placeholder="First Name" required />
-                <input type="text" name="last-name" class="field-style field-split align-right" placeholder="Last Name" required />
+                <input type="text" name="first-name" class="field-style field-split align-left" placeholder="First Name"
+                    required />
+                <input type="text" name="last-name" class="field-style field-split align-right" placeholder="Last Name"
+                    required />
             </li>
-    
-    
+
+
             <li>
-                <input type="text" name="passport-nid" class="field-style field-split align-left" placeholder="Passport/NID" required />
-                <input type="text" name="nationality" class="field-style field-split align-right" placeholder="Nationality" required />
-            </li>
-            <li>
-                <input type="text" name="occupation" class="field-style field-split align-left" placeholder="Occupation" required />
-                <input type="number" id="age" name="age" class="field-style field-full" placeholder="Enter your age" required />
-                
-                
+                <input type="text" name="passport-nid" class="field-style field-split align-left"
+                    placeholder="Passport/NID" required />
+                <input type="text" name="nationality" class="field-style field-split align-right"
+                    placeholder="Nationality" required />
             </li>
             <li>
-                <input type="email" name="email" class="field-style field-split align-left" placeholder="Email" required />
-                <input type="tel" name="mobile" class="field-style field-split align-right" placeholder="Mobile" required />
+                <input type="text" name="occupation" class="field-style field-split align-left" placeholder="Occupation"
+                    required />
+                <input type="number" id="age" name="age" class="field-style field-full" placeholder="Enter your age"
+                    required />
+
+
             </li>
             <li>
-                <select id="room" name="room" class="field-style field-split align-left"  required>
+                <input type="email" name="email" class="field-style field-split align-left" placeholder="Email"
+                    required />
+                <input type="tel" name="mobile" class="field-style field-split align-right" placeholder="Mobile"
+                    required />
+            </li>
+            <li>
+                <select id="room" name="room" class="field-style field-split align-left" required>
                     <option value="" disabled selected>Select a room</option>
                     <option value="boutique-room">Boutique Room</option>
                     <option value="executive-double">Executive Double</option>
@@ -60,20 +74,16 @@
                     <option value="grand-suite">Grand Suite</option>
                     <option value="family-suite">Family Suite</option>
                 </select>
-             <input type="number" name="price" class="field-style field-split align-right" placeholder="price" required />
+                <input type="number" name="price" class="field-style field-split align-right" placeholder="price"
+                    required />
             </li>
             <li>
                 <input type="submit" value="Submit Booking" />
             </li>
         </ul>
-       
+
 
     </form>
-
-    
-
-    
-
-
 </body>
+
 </html>
