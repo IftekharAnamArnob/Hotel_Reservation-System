@@ -180,7 +180,7 @@
 
         <div class = "book">
             <form class = "book-form">
-                <!-- <div class = "form-item">
+                <div class = "form-item">
                     <label for = "checkin-date">Check In Date: </label>
                     <input type = "date" id = "chekin-date">
                 </div>
@@ -188,24 +188,9 @@
                     <label for = "checkout-date">Check Out Date: </label>
                     <input type = "date" id = "chekout-date">
                 </div>            
-                <div class = "form-item">
-                    <label for = "rooms">Rooms: </label>
-                    <input type = "number" min = "1" value = "1" id = "rooms">
-                </div> -->
                 <div class="form-item">
-                    <form method="GET">
-                        <a class="custom-button" href="/room_availability">Book now</a>
-                    </form>
-                </div>
-            
-                <div class="cancel-button-container">
-                    <form method="GET">
-                        <a class="custom-button" href="/cancel_booking">Cancel Booking</a>
-                    </form>
-                </div>
-            
-                
-                 
+                    <a class="custom-button" method="POST" href="/room_availability">Book now</a>
+                </div>     
             </form>
         </div>
 

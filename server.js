@@ -14,8 +14,8 @@ db.connect((err) => {
     console.log("Connected to mysql server");
 });
 
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public/html');
 
@@ -24,20 +24,33 @@ app.use("/public/css", express.static(__dirname + '/public/css/'));
 app.use("/public/images", express.static(__dirname + '/public/images/'));
 
 app.get('/', (req, res) => {
+    console.log("Hello Home");
     res.sendFile(__dirname + '/public/html/index.html');
 });
 
 app.get('/login', (req, res) => {
-    console.log("Helo login");
+    console.log("Hello login");
     res.sendFile(__dirname + '/public/html/login.html');
 });
 
 app.get('/registration', (req, res) => {
-    console.log("Helo registration");
+    console.log("Hello registration");
     res.sendFile(__dirname + '/public/html/registration.html');
 });
 
+app.post('/room_availability', (req, res) => {
+    console.log("Hello post room availability");
+    
+    const checkinDate = req.body['checkin-date'];
+    const checkoutDate = req.body['checkout-date'];
+  
+    console.log("Check-in Date: " + checkinDate);
+    console.log("Check-out Date: " + checkoutDate);
+});
+
 app.get('/room_availability', (req, res) => {
+    console.log("Hello Room availability");
+
     const queryCount = 6; // The number of queries to run
     let completedQueries = 0; // Initialize the counter
     const available = [];
@@ -73,6 +86,11 @@ app.get('/room_availability', (req, res) => {
             handleQueryResult(err, results);
         });
     });
+});
+
+app.get('/book', (req, res) => {
+    console.log("Hello book");
+    res.sendFile(__dirname + '/public/html/book.html');
 });
 
 
