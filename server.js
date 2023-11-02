@@ -28,6 +28,16 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/html/index.html');
 });
 
+app.post('/', (req, res) => {
+    console.log("Hello post room availability");
+    
+    const checkinDate = req.body['checkin-date'];
+    const checkoutDate = req.body['checkout-date'];
+  
+    console.log("Check-in Date: " + checkinDate);
+    console.log("Check-out Date: " + checkoutDate);
+});
+
 app.get('/login', (req, res) => {
     console.log("Hello login");
     res.sendFile(__dirname + '/public/html/login.html');
@@ -36,16 +46,6 @@ app.get('/login', (req, res) => {
 app.get('/registration', (req, res) => {
     console.log("Hello registration");
     res.sendFile(__dirname + '/public/html/registration.html');
-});
-
-app.post('/room_availability', (req, res) => {
-    console.log("Hello post room availability");
-    
-    const checkinDate = req.body['checkin-date'];
-    const checkoutDate = req.body['checkout-date'];
-  
-    console.log("Check-in Date: " + checkinDate);
-    console.log("Check-out Date: " + checkoutDate);
 });
 
 app.get('/room_availability', (req, res) => {
