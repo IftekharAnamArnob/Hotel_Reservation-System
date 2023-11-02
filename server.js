@@ -1,6 +1,7 @@
 const db = require('./database');
 const express = require('express');
 const bodyParser = require('body-parser');
+const ejs = require('ejs');
 
 const app = express();
 const port = process.env.PORT || 6969;
@@ -15,7 +16,9 @@ db.connect((err) => {
 
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/public/html');
+
 app.use(express.static(__dirname, + '/public/script.js'))
 app.use("/public/css", express.static(__dirname + '/public/css/'));
 app.use("/public/images", express.static(__dirname + '/public/images/'));
@@ -35,24 +38,24 @@ app.get('/registration', (req, res) => {
 });
 
 app.get('/room_availability', (req, res) => {
-    console.log("Hello room availability");
-    const available = [];
     const queryCount = 6; // The number of queries to run
     let completedQueries = 0; // Initialize the counter
+    const available = [];
 
     const handleQueryResult = (err, result) => {
         if (err) {
             console.error('Error fetching available room count: ', err);
-            return 0;
+        } else {
+            const availableRoomCount = result[0].roomCount;
+            available.push(availableRoomCount);
         }
-        const availableRoomCount = result[0].roomCount;
-        available.push(availableRoomCount);
+
         completedQueries++;
 
         if (completedQueries === queryCount) {
-            // All queries have completed, send the response
+            // Render the EJS template with room availability data
             console.log(available);
-            res.sendFile(__dirname + '/public/html/room_availability.html');
+            res.render('room_availability', { available: available });
         }
     };
 
@@ -71,6 +74,8 @@ app.get('/room_availability', (req, res) => {
         });
     });
 });
+
+
 
 app.listen(port, () => {
     console.log(`Listening to port ${port}`);

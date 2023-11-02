@@ -1,7 +1,10 @@
+<!-- room_availability.ejs -->
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Select Your Room</title>
+    <title>Room Availability</title>
+    <!-- Add your CSS and other head content here -->
     <style>
         /* Your CSS styles here */
         body {
@@ -66,12 +69,14 @@
             margin: 20px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Select Your Room</h1>
 
         <div class="room">
+            <!-- Room 1 -->
             <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 1">
             <div class="room-description">
                 <h2>BOUTIQUE Room</h2>
@@ -80,7 +85,6 @@
                     <span>BDT 3,150.000/</span> Per Night
                 </p>
                 <p class="room-status available"># of available rooms: <%= available[0] %></p>
-                
             </div>
         </div>
 
@@ -92,73 +96,68 @@
                 <p >
                     <span>BDT 4,200.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[0] %></p>
+                <p class="room-status available"># of available rooms: <%= available[1] %></p>
                 
             </div>
         </div>
 
-        
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 2">
+            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 3">
             <div class="room-description">
                 <h2>FAMILY SUITE</h2>
                 <p>Spacious room with two king sized double bed</p>
                 <p >
                     <span>BDT 7,000.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[0] %></p>
+                <p class="room-status available"># of available rooms: <%= available[2] %></p>
                 
             </div>
         </div>
 
-        
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 2">
+            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 4">
             <div class="room-description">
                 <h2>EXECUTIVE TWIN</h2>
                 <p>Standard room with two single bed</p>
                 <p >
                     <span>BDT 6,200.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[0] %></p>
+                <p class="room-status available"># of available rooms: <%= available[3] %></p>
                 
             </div>
         </div>
 
-        
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 2">
+            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 5">
             <div class="room-description">
                 <h2>PREMIER TWIN</h2>
                 <p>Spacious room with two double bed</p>
                 <p >
                     <span>BDT 8,500.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[0] %></p>
+                <p class="room-status available"># of available rooms: <%= available[4] %></p>
                 
             </div>
         </div>
 
-        
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 2">
+            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 6">
             <div class="room-description">
                 <h2>GRAND SUITE</h2>
                 <p>Luxury suite room with neoclassical king bed</p>
                 <p >
                     <span>BDT 18,000.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[0] %></p>
+                <p class="room-status available"># of available rooms: <%= available[5] %></p>
                 
             </div>
         </div>
 
-        <!-- Add more room listings as needed -->
+        <!-- Room 2 and other rooms with similar structure -->
 
         <div class="form-item">
             <a href="/public/html/book.html" class="btn">Book Now</a>
         </div>
     </div>
-
 </body>
 </html>
