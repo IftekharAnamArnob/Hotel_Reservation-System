@@ -25,17 +25,7 @@ app.use("/public/images", express.static(__dirname + '/public/images/'));
 
 app.get('/', (req, res) => {
     console.log("Hello Home");
-    res.sendFile(__dirname + '/public/html/index.html');
-});
-
-app.post('/', (req, res) => {
-    console.log("Hello post room availability");
-    
-    const checkinDate = req.body['checkin-date'];
-    const checkoutDate = req.body['checkout-date'];
-  
-    console.log("Check-in Date: " + checkinDate);
-    console.log("Check-out Date: " + checkoutDate);
+    res.render('index');
 });
 
 app.get('/login', (req, res) => {
@@ -49,7 +39,10 @@ app.get('/registration', (req, res) => {
 });
 
 app.get('/room_availability', (req, res) => {
+
     console.log("Hello Room availability");
+
+    console.log(req.query);
 
     const queryCount = 6; // The number of queries to run
     let completedQueries = 0; // Initialize the counter

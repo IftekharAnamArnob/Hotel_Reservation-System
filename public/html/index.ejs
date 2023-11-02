@@ -194,7 +194,7 @@
         </div>
     </section>
 
-    <div class="book">
+    <!-- <div class="book">
         <form class="book-form">
             <div class="form-item">
                 <label for="checkin-date">Check In Date: </label>
@@ -208,7 +208,17 @@
                 <a class="custom-button" method="POST" href="/room_availability">Book now</a>
             </div>
         </form>
-    </div>
+    </div> -->
+
+    <form action="/room_availability" method="get">
+        <label for="checkin-date">Check-In Date:</label>
+        <input type="date" name="checkin-date" required />
+  
+        <label for="checkout-date">Check-Out Date:</label>
+        <input type="date" name="checkout-date" required />
+  
+        <button type="submit">Find Rooms</button>
+    </form>
 
     <section class="rooms sec-width" id="rooms">
         <div class="title">
