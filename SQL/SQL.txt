@@ -55,3 +55,6 @@ CREATE TABLE reservation_rooms (
 
 ALTER TABLE reservation
 ADD COLUMN total_guests INT;
+
+ALTER TABLE reservation
+ADD COLUMN room_type_name VARCHAR(255);

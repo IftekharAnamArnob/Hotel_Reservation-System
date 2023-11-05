@@ -99,12 +99,37 @@ app.get('/apply_book', (req, res) => {
     const age = req.query['age'];
     const email = req.query['email'];
     const mobile =req.query['contact_no'];
-    const roomType = req.query['type_name'];
+    var roomType = req.query['type_name'];
     const numberOfGuests = req.query['total_guests'];
 
-    console.log(req.query);
+    const sql = 'INSERT INTO guest (first_name, last_name, passport_no, nid_no, occupation, age, email, contact_no) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    const values = [firstName, lastName, passportNo, nidNo, occupation, age, email, mobile];
+
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            console.error('Error inserting data into guest table: ' + err);
+        } else {
+            console.log('Data inserted successfully into the guest table: ');
+        }
+    });
+
+    db.query(`SELECT guest_id FROM guest WHERE nid_no = ?`, [nidNo], (err, result) => {
+        console.log(result);
+    });
+
+    // const sql2 = `INSERT INTO reservation (check_in_date, check_out_date, total_guests, room_type_name)`;
+    // const values2 = [requestedCheckinDate, requestedCheckoutDate, numberOfGuests, roomType];
+
+    // db.query(sql2, values2, (err, result) => {
+    //     if (err) {
+    //         console.error('Error inserting data into reservation table: ' + err);
+    //     } else {
+    //         console.log('Data inserted successfully into the reservation table');
+    //     }
+    // });
 
     res.render('apply_success');
+    // console.log(req.query);
 });
 
 
