@@ -38,15 +38,17 @@ app.get('/registration', (req, res) => {
     res.sendFile(__dirname + '/public/html/registration.html');
 });
 
+const available = [];
 app.get('/room_availability', (req, res) => {
-
     console.log("Hello Room availability");
 
-    console.log(req.query);
+    const requestedCheckinDate = req.query['checkin-date'];
+    const requestedCheckoutDate = req.query['checkout-date'];
+    console.log("Requested Check in Date: " + requestedCheckinDate);
+    console.log("Requested Check out Date: " + requestedCheckoutDate);
 
-    const queryCount = 6; // The number of queries to run
-    let completedQueries = 0; // Initialize the counter
-    const available = [];
+    const queryCount = 6;
+    let completedQueries = 0;    
 
     const handleQueryResult = (err, result) => {
         if (err) {
@@ -59,20 +61,17 @@ app.get('/room_availability', (req, res) => {
         completedQueries++;
 
         if (completedQueries === queryCount) {
-            // Render the EJS template with room availability data
             console.log(available);
             res.render('room_availability', { available: available });
         }
     };
 
-    const queries = [
-        'SELECT COUNT(*) AS roomCount FROM room WHERE is_available_now = 1 AND room_type_id = 1',
-        'SELECT COUNT(*) AS roomCount FROM room WHERE is_available_now = 1 AND room_type_id = 2',
-        'SELECT COUNT(*) AS roomCount FROM room WHERE is_available_now = 1 AND room_type_id = 3',
-        'SELECT COUNT(*) AS roomCount FROM room WHERE is_available_now = 1 AND room_type_id = 4',
-        'SELECT COUNT(*) AS roomCount FROM room WHERE is_available_now = 1 AND room_type_id = 5',
-        'SELECT COUNT(*) AS roomCount FROM room WHERE is_available_now = 1 AND room_type_id = 6'
-    ];
+    const roomTypeIds = [1, 2, 3, 4, 5, 6];
+
+    const queries = roomTypeIds.map((roomId) => {
+        return `SELECT COUNT(*) AS roomCount FROM room WHERE room_type_id = ${roomId} AND 
+        ((busy_from >= '${requestedCheckoutDate}' OR busy_upto <= '${requestedCheckinDate}') OR (is_available_now = 1 AND busy_from IS NULL AND busy_upto IS NULL))`; 
+    });
 
     queries.forEach((query) => {
         db.query(query, (err, results) => {
@@ -83,7 +82,7 @@ app.get('/room_availability', (req, res) => {
 
 app.get('/book', (req, res) => {
     console.log("Hello book");
-    res.sendFile(__dirname + '/public/html/book.html');
+    res.render('book');
 });
 
 
