@@ -39,11 +39,13 @@ app.get('/registration', (req, res) => {
 });
 
 const available = [];
+var requestedCheckinDate = 'NULL';
+var requestedCheckoutDate = 'NULL';
 app.get('/room_availability', (req, res) => {
     console.log("Hello Room availability");
 
-    const requestedCheckinDate = req.query['checkin-date'];
-    const requestedCheckoutDate = req.query['checkout-date'];
+    requestedCheckinDate = req.query['checkin-date'];
+    requestedCheckoutDate = req.query['checkout-date'];
     console.log("Requested Check in Date: " + requestedCheckinDate);
     console.log("Requested Check out Date: " + requestedCheckoutDate);
 
@@ -98,8 +100,10 @@ app.get('/apply_book', (req, res) => {
     const email = req.query['email'];
     const mobile =req.query['contact_no'];
     const roomType = req.query['type_name'];
+    const numberOfGuests = req.query['total_guests'];
 
     console.log(req.query);
+
     res.render('apply_success');
 });
 

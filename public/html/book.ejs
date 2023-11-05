@@ -61,11 +61,33 @@
                     <option value="grand-suite">Grand Suite</option>
                     <option value="family-suite">Family Suite</option>
                 </select>
+                <input type="number" name="total_guests" class="field-style field-split align-right" placeholder="Number of guests" required />
             </li>
             <li>
                 <!-- <a href="/apply_book" class="btn">Apply for booking</a> -->
                 <input type="submit" value="Apply for booking" />
             </li>
+            <!-- To restrict the user from selecting unavailable rooms -->
+            <script>
+                const availableRooms = <%= JSON.stringify(available) %>;
+                const roomSelect = document.getElementById('room');
+        
+                roomSelect.addEventListener('change', () => {
+                    const selectedRoom = roomSelect.value;
+                    const availableCount = availableRooms[roomSelect.selectedIndex - 1];
+        
+                    const guestsInput = document.querySelector('[name="total_guests"]');
+                    guestsInput.value = '';
+                    guestsInput.disabled = true;
+        
+                    if (availableCount >= 1) {
+                        guestsInput.disabled = false;
+                    } else {
+                        alert('Selected room is not available.');
+                        roomSelect.selectedIndex = 0;
+                    }
+                });
+            </script>
         </ul>
     </form>
     
