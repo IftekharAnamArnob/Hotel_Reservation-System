@@ -82,9 +82,26 @@ app.get('/room_availability', (req, res) => {
 
 app.get('/book', (req, res) => {
     console.log("Hello book");
-    res.render('book');
+    res.render('book', { available: available });
+    // res.render('book');
 });
 
+app.get('/apply_book', (req, res) => {
+    console.log("Hello apply book");
+
+    const firstName = req.query['first_name'];
+    const lastName = req.query['last_name'];
+    const passportNo = req.query['passport_no'];
+    const nidNo = req.query['nid_no'];
+    const occupation = req.query['occupation'];
+    const age = req.query['age'];
+    const email = req.query['email'];
+    const mobile =req.query['contact_no'];
+    const roomType = req.query['type_name'];
+
+    console.log(req.query);
+    res.render('apply_success');
+});
 
 
 app.listen(port, () => {

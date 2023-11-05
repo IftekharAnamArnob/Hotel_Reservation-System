@@ -33,39 +33,26 @@
 
 
     <h1>Confirm your booking</h1>
-
-    <form class="form-style-9 bigger-form" action="/public/html/Choose_payment.html" method="post">
+    <form class="form-style-9 bigger-form" action="/apply_book" method="get">
         <ul>
             <li>
-                <input type="text" name="first-name" class="field-style field-split align-left" placeholder="First Name"
-                    required />
-                <input type="text" name="last-name" class="field-style field-split align-right" placeholder="Last Name"
-                    required />
-            </li>
-
-
-            <li>
-                <input type="text" name="passport-nid" class="field-style field-split align-left"
-                    placeholder="Passport/NID" required />
-                <input type="text" name="nationality" class="field-style field-split align-right"
-                    placeholder="Nationality" required />
+                <input type="text" name="first_name" class="field-style field-split align-left" placeholder="First Name" required />
+                <input type="text" name="last_name" class="field-style field-split align-right" placeholder="Last Name" required />
             </li>
             <li>
-                <input type="text" name="occupation" class="field-style field-split align-left" placeholder="Occupation"
-                    required />
-                <input type="number" id="age" name="age" class="field-style field-full" placeholder="Enter your age"
-                    required />
-
-
+                <input type="text" name="passport_no" class="field-style field-split align-left" placeholder="Passport" required />
+                <input type="text" name="nid_no" class="field-style field-split align-right" placeholder="NID" required />
             </li>
             <li>
-                <input type="email" name="email" class="field-style field-split align-left" placeholder="Email"
-                    required />
-                <input type="tel" name="mobile" class="field-style field-split align-right" placeholder="Mobile"
-                    required />
+                <input type="text" name="occupation" class="field-style field-split align-left" placeholder="Occupation" required />
+                <input type="number" id="age" name="age" class="field-style field-split align-right" placeholder="Enter your age" required />
             </li>
             <li>
-                <select id="room" name="room" class="field-style field-split align-left" required>
+                <input type="email" name="email" class="field-style field-split align-left" placeholder="Email" required />
+                <input type="text" name="contact_no" class="field-style field-split align-right" placeholder="Mobile" required />
+            </li>
+            <li>
+                <select id="room" name="type_name" class="field-style field-split align-left" required>
                     <option value="" disabled selected>Select a room</option>
                     <option value="boutique-room">Boutique Room</option>
                     <option value="executive-double">Executive Double</option>
@@ -74,16 +61,39 @@
                     <option value="grand-suite">Grand Suite</option>
                     <option value="family-suite">Family Suite</option>
                 </select>
-                <!-- <input type="number" name="price" class="field-style field-split align-right" placeholder="price"
-                    required /> -->
             </li>
             <li>
-                <input type="submit" value="Submit Booking" />
+                <!-- <a href="/apply_book" class="btn">Apply for booking</a> -->
+                <input type="submit" value="Apply for booking" />
             </li>
         </ul>
-
-
     </form>
+    
+    <h2>Room Availability</h2>
+    <ul>
+        <h2>
+        <li>
+            <strong>Boutique Room:</strong> <span id="boutique-room-availability"><%= available[0] %></span>
+        </li>
+        <li>
+            <strong>Executive Double:</strong> <span id="executive-double-availability"><%= available[1] %></span>
+        </li>
+        <li>
+            <strong>Executive Twin:</strong> <span id="executive-twin-availability"><%= available[2] %></span>
+        </li>
+        <li>
+            <strong>Premier Twin:</strong> <span id="premier-twin-availability"><%= available[3] %></span>
+        </li>
+        <li>
+            <strong>Grand Suite:</strong> <span id="grand-suite-availability"><%= available[4] %></span>
+        </li>
+        <li>
+            <strong>Family Suite:</strong> <span id="family-suite-availability"><%= available[5] %></span>
+        </li>
+    </h2>
+    </ul>
+    
+   
 </body>
 
 </html>
