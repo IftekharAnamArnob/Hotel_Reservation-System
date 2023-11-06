@@ -58,3 +58,6 @@ ADD COLUMN total_guests INT;
 
 ALTER TABLE reservation
 ADD COLUMN room_type_name VARCHAR(255);
+
+ALTER TABLE reservation
+MODIFY reservation_status VARCHAR(255) DEFAULT 'Pending';

@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 6969;
 
 db.connect((err) => {
-    if(err) {
+    if (err) {
         console.log("Cannot connect to mysql server");
         return;
     }
@@ -50,7 +50,7 @@ app.get('/room_availability', (req, res) => {
     console.log("Requested Check out Date: " + requestedCheckoutDate);
 
     const queryCount = 6;
-    let completedQueries = 0;    
+    let completedQueries = 0;
 
     const handleQueryResult = (err, result) => {
         if (err) {
@@ -72,7 +72,7 @@ app.get('/room_availability', (req, res) => {
 
     const queries = roomTypeIds.map((roomId) => {
         return `SELECT COUNT(*) AS roomCount FROM room WHERE room_type_id = ${roomId} AND 
-        ((busy_from >= '${requestedCheckoutDate}' OR busy_upto <= '${requestedCheckinDate}') OR (is_available_now = 1 AND busy_from IS NULL AND busy_upto IS NULL))`; 
+        ((busy_from >= '${requestedCheckoutDate}' OR busy_upto <= '${requestedCheckinDate}') OR (is_available_now = 1 AND busy_from IS NULL AND busy_upto IS NULL))`;
     });
 
     queries.forEach((query) => {
@@ -98,7 +98,7 @@ app.get('/apply_book', (req, res) => {
     const occupation = req.query['occupation'];
     const age = req.query['age'];
     const email = req.query['email'];
-    const mobile =req.query['contact_no'];
+    const mobile = req.query['contact_no'];
     var roomType = req.query['type_name'];
     const numberOfGuests = req.query['total_guests'];
 
@@ -114,21 +114,31 @@ app.get('/apply_book', (req, res) => {
     });
 
     db.query(`SELECT guest_id FROM guest WHERE nid_no = ?`, [nidNo], (err, result) => {
-        console.log(result);
+        if (err) {
+            console.log("Error getting nid no");
+        } else {
+            if (result.length > 0) {
+                const guestId = result[0].guest_id;
+                console.log('Guest ID: ', guestId);
+
+                const sql2 = `INSERT INTO reservation (guest_id, check_in_date, check_out_date, total_guests, room_type_name) VALUES (?, ?, ?, ?, ?)`;
+                const values2 = [guestId, requestedCheckinDate, requestedCheckoutDate, numberOfGuests, roomType];
+
+                db.query(sql2, values2, (err, result) => {
+                    if (err) {
+                        console.error('Error inserting data into reservation table: ' + err);
+                    } else {
+                        console.log('Data inserted successfully into the reservation table');
+                        res.render('apply_success');
+                    }
+                });
+
+            } else {
+                console.log("No result found fot the given nid_no");
+            }
+        }
     });
 
-    // const sql2 = `INSERT INTO reservation (check_in_date, check_out_date, total_guests, room_type_name)`;
-    // const values2 = [requestedCheckinDate, requestedCheckoutDate, numberOfGuests, roomType];
-
-    // db.query(sql2, values2, (err, result) => {
-    //     if (err) {
-    //         console.error('Error inserting data into reservation table: ' + err);
-    //     } else {
-    //         console.log('Data inserted successfully into the reservation table');
-    //     }
-    // });
-
-    res.render('apply_success');
     // console.log(req.query);
 });
 
