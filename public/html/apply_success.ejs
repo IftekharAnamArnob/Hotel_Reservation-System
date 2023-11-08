@@ -1,11 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Booking Details</title>
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url("public/images/bg2_payment.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.booking-details {
+    
+   
+    border-radius: 5px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: white
+}
+
+
+.booking-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-left, .info-right {
+    width: 50%; /* Adjusted to make both sides equal width */
+}
+
+.info-left p, .info-right p {
+    margin: 10px 0;
+    color:white;
+}
+
+.info-left strong, .info-right strong {
+    font-weight: bold;
+}
+
+.booking-status p {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.cancel-button {
+    background-color: #ff4444;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.cancel-button:hover {
+    background-color: #cc0000;
+}
+
+
+    </style>
 </head>
 <body>
-    <h1>Successfully applied for booking</h1>
+  
+    <div class="booking-details">
+        <h1>Booking Details</h1>
+        <div class="booking-info">
+            <div class="info-left">
+                <h2>
+                   <b> 
+                <p><strong>Reservation ID:</strong> <%= bookingData.reservationId %> </p>
+                <p><strong>First Name:</strong> <%= bookingData.firstName %></p>
+                <p><strong>Last Name:</strong> <%= bookingData.lastName %></p>
+                <p><strong>Email:</strong> <%= bookingData.email %></p>
+                </b>
+                </h2>
+            </div>
+            <div class="info-right">
+                <h2>
+                   
+                <p><strong>Check-In Date:</strong> <%= bookingData.checkInDate %></p>
+                <p><strong>Check-Out Date:</strong> <%= bookingData.checkOutDate %></p>
+                <p><strong>Reservation status:</strong> <%= bookingData.reservationStatus %></p>
+                </h2>
+               
+            </div>
+        </div>
+        <div class="booking-status">
+            <a href="cancel_booking.html">
+                <button class="cancel-button">Cancel</button>
+            </a>
+            
+        </div>
+    </div>
 </body>
 </html>

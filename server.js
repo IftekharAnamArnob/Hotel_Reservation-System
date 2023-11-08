@@ -124,12 +124,33 @@ app.get('/apply_book', (req, res) => {
                 const sql2 = `INSERT INTO reservation (guest_id, check_in_date, check_out_date, total_guests, room_type_name) VALUES (?, ?, ?, ?, ?)`;
                 const values2 = [guestId, requestedCheckinDate, requestedCheckoutDate, numberOfGuests, roomType];
 
-                db.query(sql2, values2, (err, result) => {
+                db.query(sql2, values2, (err, result1) => {
                     if (err) {
                         console.error('Error inserting data into reservation table: ' + err);
                     } else {
-                        console.log('Data inserted successfully into the reservation table');
-                        res.render('apply_success');
+                        console.log('Data inserted successfully into the reservation table.');
+
+                        db.query('SELECT reservation_id, reservation_status FROM reservation WHERE guest_id = ?', [guestId] ,(err, resultId) => {
+                            if (err) {
+                                console.error('Error fetching reservation ID: ' + err);
+                            } else {
+                                const reservationId = resultId[0].reservation_id;
+                                console.log('Reservation ID:', reservationId);
+                                const reservationStatus = resultId[0].reservation_status;
+
+                                const bookingData = {
+                                    reservationId: reservationId,
+                                    firstName: firstName,
+                                    lastName: lastName,
+                                    email: email,
+                                    checkInDate: requestedCheckinDate,
+                                    checkOutDate: requestedCheckoutDate,
+                                    reservationStatus: reservationStatus, // Replace with the actual reservation status
+                                };
+                
+                                res.render('apply_success', { bookingData });
+                            }
+                        });
                     }
                 });
 
@@ -138,8 +159,6 @@ app.get('/apply_book', (req, res) => {
             }
         }
     });
-
-    // console.log(req.query);
 });
 
 
