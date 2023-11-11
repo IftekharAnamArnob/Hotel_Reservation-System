@@ -130,7 +130,7 @@ app.get('/apply_book', (req, res) => {
                     } else {
                         console.log('Data inserted successfully into the reservation table.');
 
-                        db.query('SELECT reservation_id, reservation_status FROM reservation WHERE guest_id = ?', [guestId] ,(err, resultId) => {
+                        db.query('SELECT reservation_id, reservation_status FROM reservation WHERE guest_id = ?', [guestId], (err, resultId) => {
                             if (err) {
                                 console.error('Error fetching reservation ID: ' + err);
                             } else {
@@ -147,7 +147,7 @@ app.get('/apply_book', (req, res) => {
                                     checkOutDate: requestedCheckoutDate,
                                     reservationStatus: reservationStatus, // Replace with the actual reservation status
                                 };
-                
+
                                 res.render('apply_success', { bookingData });
                             }
                         });
@@ -159,6 +159,61 @@ app.get('/apply_book', (req, res) => {
             }
         }
     });
+});
+
+app.get('/cancel_book', (req, res) => {
+    console.log("Hello Cancel Booking");
+    const mismatchNotification = "No match";
+    res.render('cancel_booking', { mismatchNotification });
+});
+
+app.post('/confirm_cancellation', (req, res) => {
+    console.log("Hello Confirm Cancellation");
+    const reservationId = req.body.reservation_id;
+    const nidNo = req.body.nid_no;
+    console.log('Reservation ID to cancel: ' + reservationId);
+    console.log('NID to cancel: ' + nidNo);
+
+    const sql = `SELECT CASE WHEN COUNT(*) > 0 THEN 'Match' ELSE 'No Match' END AS result FROM
+    reservation r JOIN guest g ON r.guest_id = g.guest_id
+    WHERE r.reservation_id = ? AND g.nid_no = ?;`
+
+    const values = [reservationId, nidNo];
+
+    db.query(sql, values, (err, result) => {
+        if (err) {
+            console.log("Error to search the cancellation data: " + err);
+        } else {
+            console.log("Reservation id and nid matches?: " + result[0].result);
+
+            const mismatchNotification = result[0].result;
+            // console.log(mismatchNotification);
+            if (result[0].result == 'No Match') {
+                console.log("Reservation ID and NID do not match!");
+                res.render('cancel_booking', { mismatchNotification });
+            } else {
+                console.log("Reservation ID and NID match!");
+                const sql = `DELETE FROM reservation WHERE reservation_id = ?`;
+                db.query(sql, [reservationId], (err, result) => {
+                    if (err) {
+                        console.log("Error removing the reservation data");
+                    } else {
+                        console.log("Successfully removed the reservation data");
+                    }
+                });
+                const sql1 = `DELETE FROM guest WHERE nid_no = ?`;
+                db.query(sql1, [nidNo], (err, result) => {
+                    if (err) {
+                        console.log("Error removing the NID data");
+                    } else {
+                        console.log("Successfully removed the NID data");
+                    }
+                });
+                res.render('cancellation');
+            }
+        }
+    });
+
 });
 
 

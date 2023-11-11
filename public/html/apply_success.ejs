@@ -3,109 +3,112 @@
 <head>
     <title>Booking Details</title>
     <style>
-  body {
-    font-family: Arial, sans-serif;
-    background-image: url("public/images/bg2_payment.jpeg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("public/images/bg2_payment.jpeg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-.booking-details {
-    
-   
-    border-radius: 5px;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 600px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+        .booking-details {
+            border-radius: 5px;
+            margin: 20px auto;
+            padding: 70px; /* Increased padding for a larger white layer */
+            max-width: 1000px; /* Increased max-width for more space */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
 
-h1 {
-    color: white
-}
+        h1 {
+            color: #333;
+        }
 
+        .booking-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
 
-.booking-info {
-    display: flex;
-    justify-content: space-between;
-}
+        .info-left, .info-right {
+            width: 45%; /* Reduced width to add more space between columns */
+            margin: 0 55px; /* Added margin to create a gap between columns */
+            text-align: left; /* Align text to the left for the left column */
+        }
 
-.info-left, .info-right {
-    width: 50%; /* Adjusted to make both sides equal width */
-}
+        .info-right {
+            text-align: right; /* Align text to the right for the right column */
+        }
 
-.info-left p, .info-right p {
-    margin: 10px 0;
-    color:white;
-}
+        .info-left p, .info-right p {
+            margin: 22px 0; /* Increased margin for more spacing between data */
+            color: #333;
+        }
 
-.info-left strong, .info-right strong {
-    font-weight: bold;
-}
+        .info-left strong, .info-right strong {
+            font-weight: bold;
+        }
 
-.booking-status p {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
+        .info-right p {
+            white-space: nowrap;
+        }
 
-.cancel-button {
-    background-color: #ff4444;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    cursor: pointer;
-}
+        .booking-status p {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 20px 0; /* Increased margin for more spacing */
+        }
 
-.cancel-button:hover {
-    background-color: #cc0000;
-}
+        .cancel-button {
+            background-color: #ff4444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
 
-
+        .cancel-button:hover {
+            background-color: #cc0000;
+        }
     </style>
 </head>
 <body>
-  
     <div class="booking-details">
         <h1>Booking Details</h1>
         <div class="booking-info">
             <div class="info-left">
                 <h2>
-                   <b> 
-                <p><strong>Reservation ID:</strong> <%= bookingData.reservationId %> </p>
-                <p><strong>First Name:</strong> <%= bookingData.firstName %></p>
-                <p><strong>Last Name:</strong> <%= bookingData.lastName %></p>
-                <p><strong>Email:</strong> <%= bookingData.email %></p>
-                </b>
+                    <b>
+                        <p><strong>Reservation ID :</strong> <%= bookingData.reservationId %></p>
+                        <p><strong>First Name :</strong> <%= bookingData.firstName %></p>
+                        <p><strong>Last Name :</strong> <%= bookingData.lastName %></p>
+                        <p><strong>Email :</strong> <%= bookingData.email %></p>
+                    </b>
                 </h2>
             </div>
             <div class="info-right">
                 <h2>
-                   
-                <p><strong>Check-In Date:</strong> <%= bookingData.checkInDate %></p>
-                <p><strong>Check-Out Date:</strong> <%= bookingData.checkOutDate %></p>
-                <p><strong>Reservation status:</strong> <%= bookingData.reservationStatus %></p>
+                    <p><strong>Check-In Date :</strong> <%= bookingData.checkInDate %></p>
+                    <p><strong>Check-Out Date :</strong> <%= bookingData.checkOutDate %></p>
+                    <p><strong>Reservation status :</strong> <%= bookingData.reservationStatus %></p>
                 </h2>
-               
             </div>
         </div>
         <div class="booking-status">
-            <a href="cancel_booking.html">
+            <a href="/cancel_book">
                 <button class="cancel-button">Cancel</button>
             </a>
-            
         </div>
     </div>
 </body>

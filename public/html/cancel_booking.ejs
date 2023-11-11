@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancel Booking</title>
+    <link rel="stylesheet" href="/public/css/cancel_booking.css"> <!-- Link to your cancel_booking.css file -->
+</head>
+
+<body>
+    <h1>Cancel Booking</h1>
+
+    <form id="cancelForm" action="/confirm_cancellation" method="POST">
+        <div>
+            <label for="ID">Enter Reservation_ID:</label><br>
+            <input type="text" name="reservation_id" required>
+            <label for="NID">Enter NID no:</label><br>
+            <input type="text" name="nid_no" required>
+        </div>
+
+        <div class="button-group">
+            <button type="submit"> Confirm Cancellation </button>
+        </div>
+    </form>
+
+    <script>
+        const mismatchNotification = '<%= mismatchNotification %>';
+        if (mismatchNotification === 'No Match') {
+            alert('Reservation ID and NID do not match! Try again.');
+        }
+
+        document.getElementById("cancelForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            this.submit();
+        });
+    </script>
+</body>
+
+</html>
