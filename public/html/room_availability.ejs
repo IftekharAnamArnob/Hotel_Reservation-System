@@ -3,15 +3,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Room Availability</title>
+
+   
     <!-- Add your CSS and other head content here -->
     <style>
+            .navbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+         /* Adjust the background color as needed */
+        padding: 10px;
+        z-index: 1000; /* Ensure the navbar is above other elements */
+    }
+
+    .navbar a {
+        color: rgb(106, 81, 81);
+        font-family: fantasy ; /* Adjust the text color as needed */
+        text-decoration: none;
+        font-size: 18px;
+        margin-right: 5px; /* Adjust the margin to shorten the gap */
+    }
+
+    
+      
+        
         /* Your CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
-            background-image: url('/public/images/family_suite1.jpg');
+            background-image: url('/public/images/Admin_Home.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -31,36 +56,61 @@
             padding: 20px;
             border: 1px solid #ddd;
             margin: 10px;
+           
         }
         .room-image {
             width: 200px;
             margin-right: 20px;
+            background-color: #333;
+            color: #fff;
+            transition: transform 0.3s ease-in-out;
+           
         }
+        .room-image:hover {
+        transform: scale(1.2);
+      }
+      
         .room-description {
             flex-grow: 1;
+            opacity: 0.8;
         }
+        
+    
+
+.room-description span{
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--yellow);
+}
         .form-item {
-            background-color: #007BFF;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                padding: 15px 30px;
+                border-radius: 8px;
+                background-color: #4CAF50;
+                color: black;
+                border: 2px solid #4CAF50;
+                transition: all 0.3s ease;
+                cursor: pointer;
+                margin-right: 20px;
+                transition: transform 0.3s ease-in-out;
         }
         .form-item:hover {
-            background-color: #0056b3;
+            transform: scale(1.2);
         }
         .room-status {
-            font-weight: bold;
-        }
-        .available {
-            color: green;
-        }
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: large;
+}
+
+.available {
+    color: green;
+    font-family: 'Poppins', sans-serif; /* You can adjust this font-family as needed */
+    font-size: large;
+}
+
         .not-available {
             color: red;
         }
@@ -68,35 +118,45 @@
             text-align: center;
             margin: 20px;
         }
+        .logo {
+        width: 18px; /* Set the width to match the "Home" link */
+        height: 18px; /* Set the height to match the "Home" link */
+        margin-right: 10px; /* Adjust the margin as needed */
+    }
     </style>
     <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
 </head>
 <body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <img src="/public/images/menu.png" alt="Menu Logo" class="logo">
+    </div>
+    
     <div class="container">
         <h1>Select Your Room</h1>
 
         <div class="room">
             <!-- Room 1 -->
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 1">
+            <img class="room-image" src="/public/images/boutique1.jpg" alt="Room 1">
             <div class="room-description">
                 <h2>BOUTIQUE Room</h2>
                 <p>Chick room with semi double bed</p>
                 <p >
                     <span>BDT 3,150.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[0] %></p>
+                <p class="room-status available">#  available rooms: <%= available[0] %></p>
             </div>
         </div>
 
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 2">
+            <img class="room-image" src="/public/images/executive_double1.jpg" alt="Room 2">
             <div class="room-description">
                 <h2>EXECUTIVE DOUBLE</h2>
                 <p>Standard room with double bed</p>
                 <p >
                     <span>BDT 4,200.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[1] %></p>
+                <p class="room-status available">#  available rooms: <%= available[1] %></p>
                 
             </div>
         </div>
@@ -109,46 +169,46 @@
                 <p >
                     <span>BDT 7,000.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[2] %></p>
+                <p class="room-status available">#  available rooms: <%= available[2] %></p>
                 
             </div>
         </div>
 
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 4">
+            <img class="room-image" src="/public/images/executive_twin1.jpg" alt="Room 4">
             <div class="room-description">
                 <h2>EXECUTIVE TWIN</h2>
                 <p>Standard room with two single bed</p>
                 <p >
                     <span>BDT 6,200.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[3] %></p>
+                <p class="room-status available">#  available rooms: <%= available[3] %></p>
                 
             </div>
         </div>
 
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 5">
+            <img class="room-image" src="/public/images/premier_twin1.jpg" alt="Room 5">
             <div class="room-description">
                 <h2>PREMIER TWIN</h2>
                 <p>Spacious room with two double bed</p>
                 <p >
                     <span>BDT 8,500.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[4] %></p>
+                <p class="room-status available">#  available rooms: <%= available[4] %></p>
                 
             </div>
         </div>
 
         <div class="room">
-            <img class="room-image" src="/public/images/family_suite1.jpg" alt="Room 6">
+            <img class="room-image" src="/public/images/grand_suite.jpg" alt="Room 6">
             <div class="room-description">
                 <h2>GRAND SUITE</h2>
                 <p>Luxury suite room with neoclassical king bed</p>
                 <p >
                     <span>BDT 18,000.000/</span> Per Night
                 </p>
-                <p class="room-status available"># of available rooms: <%= available[5] %></p>
+                <p class="room-status available">#  available rooms: <%= available[5] %></p>
                 
             </div>
         </div>

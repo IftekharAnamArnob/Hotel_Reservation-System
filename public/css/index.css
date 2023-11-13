@@ -247,51 +247,103 @@ img{
 }
 
 /* booking form */
-.book{
+
+
+
+
+
+
+/* Style the button on hover */
+ /* Apply styles to the form */
+form {
     background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("/public/images/banner-img.jpg") center/cover no-repeat;
     color: #fff;
     padding: 40px 60px;
+    display: flex; /* Change from grid to flex */
+    gap: 15px;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
 }
-.book-form{
-    display: grid;
-}
-.form-item{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.book-form input[type = "submit"]{
-    font-size: 16px;
-    text-transform: uppercase;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    width: 140px;
-    display: block;
-    margin: 15px auto;
-    cursor: pointer;
-    transition: var(--transition);
-}
-.book-form label, .book-form input{
-    width: 100%;
-}
-.book-form label{
+
+/* Apply styles to labels */
+label {
     font-weight: 600;
     word-spacing: 5px;
     padding-bottom: 8px;
+    width: 100%;
 }
-.book-form input:not(.btn){
+
+/* Apply styles to input elements */
+input:not([type="submit"]) {
     margin: 4px 0 16px 0;
     padding: 12px 15px;
     border-radius: 5px;
     font-size: 17px;
     border: none;
+    width: 100%;
 }
-.book-form input:focus{
+
+/* Apply styles to the submit button */
+button,
+input[type="submit"] {
+    font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                padding: 15px 30px;
+                border-radius: 8px;
+                background-color: #007BFF;
+                color: black;
+                
+                transition: all 0.3s ease;
+                cursor: pointer;
+                margin-right: 20px;
+                transition: transform 0.3s ease-in-out;
+
+}
+
+
+
+
+/* Style the button on hover */
+button:hover,
+input[type="submit"]:hover {
+    transform: scale(1.2);
+}
+
+/* Remove default outline on focus */
+label, input, button {
     outline: 0;
+}
+
+/* Apply box shadow on focus */
+label:focus, input:focus, button:focus {
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
 }
+
+/* Adjust the width of labels, inputs, and button for better alignment */
+label, input:not([type="submit"]), button {
+    flex: 1; /* Make items take equal width to fill the available space */
+    margin-right: 5px;
+    height: 60px;
+     /* Add margin for spacing */
+}
+
+/* Remove margin from the last item to prevent extra spacing */
+button:last-child,
+input[type="submit"]:last-child {
+    margin-right: 0;
+}
+
+button[name="action"][value="cancelBooking"] {
+    background-color: #f44336; /* Red background color */
+    color: white; /* White text color */
+}
+
+ 
+
+
+
+
+
 @media(min-width: 768px){
     .book-form{
         grid-template-columns: repeat(2, 1fr);
@@ -574,6 +626,39 @@ a:hover {
 .cancel-button:hover {
     background-color: #cc0000;
 }
+
+.wavey{
+    position: relative;
+    
+}
+.wavey span
+{
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 2em;
+    text-transform: uppercase;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.05s * var(--i));
+
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform: translateY(0px);
+    }
+    20%
+    {
+        transform: translateY(-20px);
+    }
+    40%,100%
+    {
+        transform: translateY(0px);
+    }
+}
+
 
 
 

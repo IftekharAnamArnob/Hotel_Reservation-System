@@ -25,12 +25,65 @@
             font-family: Arial, sans-serif;
             /* Set the font family for the text */
         }
+        .availability-container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #000;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            margin-right: 10px;
+        }
+        .navbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+         /* Adjust the background color as needed */
+        padding: 10px;
+        z-index: 1000; /* Ensure the navbar is above other elements */
+    }
+
+    .navbar a {
+        color: white;
+        font-family: fantasy ; /* Adjust the text color as needed */
+        text-decoration: none;
+        font-size: 18px;
+        margin-right: 5px; /* Adjust the margin to shorten the gap */
+    }
+    .logo {
+        width: 18px; /* Set the width to match the "Home" link */
+        height: 18px; /* Set the height to match the "Home" link */
+        margin-right: 10px;
+        color: white; /* Adjust the margin as needed */
+    }
+
+       
     </style>
     <link rel="stylesheet" href="/public/css/book.css">
 </head>
 
 <body>
-
+    <div class="navbar">
+        <a href="/">Home</a>
+        <img src="/public/images/menu.png" alt="Menu Logo" class="logo">
+    </div>
 
     <h1>Confirm your booking</h1>
     <form class="form-style-9 bigger-form" action="/apply_book" method="get">
@@ -90,7 +143,8 @@
             </script>
         </ul>
     </form>
-    
+    <div class="availability-container">
+
     <h2>Room Availability</h2>
     <ul>
         <h2>
@@ -114,6 +168,8 @@
         </li>
     </h2>
     </ul>
+
+    </div>
     
    
 </body>

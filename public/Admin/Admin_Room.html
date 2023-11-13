@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation Admin Panel</title>
+    <style>
+        /* Your existing styles... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            background-image: url("/public/images/Desk.jpg");
+            /* Replace 'background.jpg' with your image file name and path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh; /* Set the height of the background */
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #e2d9d9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .approve-button,
+        .reject-button,
+        .edit-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .approve-button {
+            background-color: #4CAF50;
+            color: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .approve-button:hover {
+            transform: scale(1.2);
+        }
+
+        .reject-button {
+            background-color: #f44336;
+            color: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .reject-button:hover {
+            transform: scale(1.2);
+        }
+
+        .edit-button {
+            background-color: #3498db;
+            color: #fff;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .edit-button:hover {
+            transform: scale(1.2);
+        }
+
+        #confirmButton {
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            background-color: #007BFF;
+            color: black;
+            border: 2px solid #007BFF;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-right: 20px;
+            transition: transform 0.3s ease-in-out;
+            /* Adds space between buttons */
+        }
+
+        #confirmButton:hover {
+            transform: scale(1.2);
+        }
+
+        #confirmButton.clicked {
+            transform: translate(5px, -5px);
+            /* Add a slight translation when clicked */
+            /* Add any other styles you want to apply when the button is clicked */
+        }
+
+        .approve-button.checked::after {
+            content: '2713';
+            /* Unicode character for a checkmark */
+            display: inline-block;
+        }
+
+        .reject-button.checked::after {
+            content: '\2716';
+            /* Unicode character for a cross */
+            display: inline-block;
+        }
+
+        .checked::after {
+            content: '\2714';
+            /* Unicode character for a checkmark */
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Room Information</h1>
+        <table id="roomTable">
+            <tr>
+                <th>Room Type</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            <!-- Table rows will be dynamically added here -->
+            
+        </table>
+        <div class="action-buttons">
+            <button id="confirmButton" onclick="confirmAction()">Confirm</button>
+        </div>
+    </div>
+
+    <script>
+        // Sample JavaScript code for populating the table dynamically
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const roomData = [
+                { type: 'BOUTIQUE ROOM', price: '100' },
+                { type: 'EXECUTIVE DOUBLE', price: '150' },
+                { type: 'FAMILY SUITE', price: '200' },
+                { type: 'EXECUTIVE TWIN', price: '200' },
+                { type: 'PREMIER TWIN', price: '200' },
+                { type: 'GRAND SUITE', price: '200' },
+                // Add more data as needed
+            ];
+
+            const roomTable = document.getElementById('roomTable');
+
+            // Loop through the data and create rows for room table
+            roomData.forEach(data => {
+                const row = roomTable.insertRow();
+                row.innerHTML = `
+                    <td>${data.type}</td>
+                    <td id="price-${data.type}">${data.price}</td>
+                    <td class="action-buttons">
+                        <button class="edit-button" data-type="${data.type}" onclick="editRoom('${data.type}')">Edit</button>
+                    </td>
+                `;
+            });
+        });
+
+        function editRoom(roomType) {
+            const priceCell = document.getElementById(`price-${roomType}`);
+            const currentPrice = priceCell.innerText.replace("BDT", '');
+            const newPrice = prompt(`Enter new price for ${roomType}:`, currentPrice);
+            if (newPrice !== null) {
+                priceCell.innerText = `BDT ${newPrice}`;
+            }
+        }
+        function confirmAction() {
+            // Implement your logic when the "Confirm" button is clicked
+            console.log("Confirm button clicked.");
+
+            // Add your confirmation logic here
+            var result = window.confirm("Are you sure you want to proceed?");
+
+            // Check the result
+            if (result) {
+                alert("You clicked OK!");
+                // Perform the action you want to take on OK
+            } else {
+                alert("You clicked Cancel!");
+                // Perform the action you want to take on Cancel
+            }
+        }
+    </script>
+</body>
+
+</html>

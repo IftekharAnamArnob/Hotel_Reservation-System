@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Booking Details</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-image: url("public/images/bg2_payment.jpeg");
             background-size: cover;
             background-repeat: no-repeat;
@@ -66,42 +69,78 @@
             border-radius: 5px;
             font-weight: bold;
             margin: 20px 0; /* Increased margin for more spacing */
+            
         }
 
         .cancel-button {
-            background-color: #ff4444;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            margin-top: 10px;
-            cursor: pointer;
+            font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                padding: 15px 30px;
+                border-radius: 8px;
+                background-color: rgb(198, 76, 76);
+                color: black;
+                border: 2px solid rgb(198, 76, 76);
+                transition: all 0.3s ease;
+                cursor: pointer;
+                margin-right: 20px;
+                transition: transform 0.3s ease-in-out;
+                
+
         }
 
         .cancel-button:hover {
             background-color: #cc0000;
+            transform: scale(1.2);
+
         }
+        .navbar {
+        position: fixed;
+        top: 0;
+        right: 0;
+         /* Adjust the background color as needed */
+        padding: 10px;
+        z-index: 1000; /* Ensure the navbar is above other elements */
+    }
+
+    .navbar a {
+        color: white;
+        font-family: fantasy ; /* Adjust the text color as needed */
+        text-decoration: none;
+        font-size: 18px;
+        margin-right: 5px; /* Adjust the margin to shorten the gap */
+    }
+    .logo {
+        width: 18px; /* Set the width to match the "Home" link */
+        height: 18px; /* Set the height to match the "Home" link */
+        margin-right: 10px;
+        color: white; /* Adjust the margin as needed */
+    }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <img src="/public/images/menu.png" alt="Menu Logo" class="logo">
+    </div>
     <div class="booking-details">
-        <h1>Booking Details</h1>
+        <h1 style="color: rgb(188, 118, 118);">Booking Details</h1>
         <div class="booking-info">
             <div class="info-left">
                 <h2>
                     <b>
-                        <p><strong>Reservation ID :</strong> <%= bookingData.reservationId %></p>
-                        <p><strong>First Name :</strong> <%= bookingData.firstName %></p>
-                        <p><strong>Last Name :</strong> <%= bookingData.lastName %></p>
-                        <p><strong>Email :</strong> <%= bookingData.email %></p>
+                        <p><strong style="color: rgb(188, 118, 118);">Reservation ID :</strong> <%= bookingData.reservationId %></p>
+                        <p><strong style="color: rgb(188, 118, 118);">First Name :</strong> <%= bookingData.firstName %></p>
+                        <p><strong style="color: rgb(188, 118, 118);">Last Name :</strong> <%= bookingData.lastName %></p>
+                        <p><strong style="color: rgb(188, 118, 118);">Email :</strong> <%= bookingData.email %></p>
                     </b>
                 </h2>
             </div>
             <div class="info-right">
                 <h2>
-                    <p><strong>Check-In Date :</strong> <%= bookingData.checkInDate %></p>
-                    <p><strong>Check-Out Date :</strong> <%= bookingData.checkOutDate %></p>
-                    <p><strong>Reservation status :</strong> <%= bookingData.reservationStatus %></p>
+                    <p><strong style="color:rgb(188, 118, 118);">Check-In Date :</strong> <%= bookingData.checkInDate %></p>
+                    <p><strong style="color: rgb(188, 118, 118);">Check-Out Date :</strong> <%= bookingData.checkOutDate %></p>
+                    <p><strong style="color: rgb(188, 118, 118);">Reservation status :</strong> <%= bookingData.reservationStatus %></p>
                 </h2>
             </div>
         </div>
@@ -109,9 +148,7 @@
             <a href="/cancel_book">
                 <button class="cancel-button">Cancel</button>
             </a>
-            <a href="/">
-                <button class="Home">Home</button>
-            </a>
+           
         </div>
     </div>
 </body>

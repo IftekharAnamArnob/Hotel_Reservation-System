@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content goes here -->
+    <title>Your Form</title>
+    <!-- Add your CSS styles or include a separate CSS file here if needed -->
+    <style>
+        /* Your CSS styles go here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .field-style {
+            /* Add your specific styles for the select element */
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .field-split {
+            /* Add your specific styles for the select element */
+            width: 100%;
+        }
+
+        .align-left {
+            /* Add your specific styles for the select element */
+            margin-bottom: 15px;
+        }
+
+        .select-box {
+            /* Additional styles for the box/container */
+            border: 2px solid #4CAF50; /* Adjust border color as needed */
+            padding: 10px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .select-box label {
+            /* Additional styles for the label */
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="select-box">
+            <label for="room">Select a room:</label>
+            <select id="room" name="type_name" class="field-style field-split align-left" required>
+                <option value="" disabled selected>Select a room</option>
+                <option value="boutique-room">Boutique Room</option>
+                <option value="executive-double">Executive Double</option>
+                <option value="executive-twin">Executive Twin</option>
+                <option value="premier-twin">Premier Twin</option>
+                <option value="grand-suite">Grand Suite</option>
+                <option value="family-suite">Family Suite</option>
+            </select>
+        </div>
+
+        <!-- Add other form elements as needed -->
+        <!-- For example, text inputs -->
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" class="field-style" required>
+
+        <!-- Submit button -->
+        <input type="submit" value="Submit" class="submit-btn">
+    </div>
+
+</body>
+</html>
