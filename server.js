@@ -23,7 +23,13 @@ app.use(express.static(__dirname, + '/public/script.js'))
 app.use("/public/css", express.static(__dirname + '/public/css/'));
 app.use("/public/images", express.static(__dirname + '/public/images/'));
 
+
+let available = [];
+var requestedCheckinDate = 'NULL';
+var requestedCheckoutDate = 'NULL';
+
 app.get('/', (req, res) => {
+    available.length = 0;
     console.log("Hello Home");
     res.render('index');
 });
@@ -38,10 +44,8 @@ app.get('/registration', (req, res) => {
     res.sendFile(__dirname + '/public/html/registration.html');
 });
 
-const available = [];
-var requestedCheckinDate = 'NULL';
-var requestedCheckoutDate = 'NULL';
 app.get('/room_availability', (req, res) => {
+    available.length = 0;
     console.log("Hello Room availability");
 
     requestedCheckinDate = req.query['checkin-date'];
