@@ -220,12 +220,15 @@
         
         <label for="checkout-date">Check-Out Date:</label>
         <input type="date" name="checkout-date" required />
+
+        <button type="submit">Find Rooms</button>
     
-      
-        <button type="submit" >Find Rooms</button>
-        <button type="submit" name="action" value="cancelBooking">Cancel Booking</button>
     </form>
     
+    <form action="/cancel_book" method="get">
+        <button type="submit" name="action" value="cancelBooking">Cancel Booking</button>
+    </form>
+
     <!-- <script>
         // Get today's date in the format "YYYY-MM-DD"
         const today = new Date().toISOString().split('T')[0];

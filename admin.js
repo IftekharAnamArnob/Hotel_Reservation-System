@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 app.get('/bookings', (req, res) => {
     console.log("Hello Admin Bookings");
     // res.render('Admin_panel');
-    const sql = `SELECT * FROM reservation`;
+    const sql = `SELECT * FROM reservation WHERE reservation_status = 'Pending'`;
 
     db.query(sql, (err, result) => {
         if(err) {
@@ -47,16 +47,26 @@ app.get('/bookings', (req, res) => {
 app.post('/updateBookings', (req, res) => {
     const { approved, rejected } = req.body;
 
-    // Update the database with the approved and rejected bookings
-    const updateQuery = `
+    // Constructing the SQL update query
+    let updateQuery = `
         UPDATE reservation
         SET reservation_status = CASE
-            WHEN reservation_id IN (${approved.join(',')}) THEN 'approved'
-            WHEN reservation_id IN (${rejected.join(',')}) THEN 'rejected'
-            ELSE reservation_status
-        END;
     `;
 
+    // Adding conditions for approved bookings
+    if (approved.length > 0) {
+        updateQuery += `WHEN reservation_id IN (${approved.join(',')}) THEN 'approved'\n`;
+    }
+
+    // Adding conditions for rejected bookings
+    if (rejected.length > 0) {
+        updateQuery += `WHEN reservation_id IN (${rejected.join(',')}) THEN 'rejected'\n`;
+    }
+
+    // Adding the default condition to keep the existing status
+    updateQuery += 'ELSE reservation_status\nEND;';
+
+    // Executing the update query
     db.query(updateQuery, (err, result) => {
         if (err) {
             console.error('Error updating bookings:', err);
@@ -71,6 +81,43 @@ app.post('/updateBookings', (req, res) => {
 app.get('/confirm_decision', (req, res) => {
     console.log("Hello confirm decision");
     res.redirect('/');
+});
+
+app.get('/room_prices', (req, res) => {
+    const sql = 'SELECT type_name, price_per_night FROM room_type';
+
+    db.query(sql, (err, result) => {
+        if (err) {
+            console.error('Error fetching room prices:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            const roomData = result.map(row => ({
+                room_type_name: row.type_name, // Corrected the property name
+                price_per_night: row.price_per_night,
+            }));
+            res.json({ roomData });
+        }
+    });
+});
+
+app.post('/update_room_price', (req, res) => {
+    const { roomType, newPrice } = req.body;
+
+    const updateQuery = `
+        UPDATE room_type
+        SET price_per_night = ?
+        WHERE type_name = ?;
+    `;
+
+    db.query(updateQuery, [newPrice, roomType], (err, result) => {
+        if (err) {
+            console.error('Error updating room price:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            console.log('Room price updated successfully.');
+            res.json({ success: true });
+        }
+    });
 });
 
 app.get('/rooms', (req, res) => {

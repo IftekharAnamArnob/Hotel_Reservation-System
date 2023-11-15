@@ -15,7 +15,8 @@
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            height: 100vh; /* Set the height of the background */
+            height: 100vh;
+            /* Set the height of the background */
             margin: 0;
         }
 
@@ -161,7 +162,7 @@
                 <th>Action</th>
             </tr>
             <!-- Table rows will be dynamically added here -->
-            
+
         </table>
         <div class="action-buttons">
             <button id="confirmButton" onclick="confirmAction()">Confirm</button>
@@ -171,40 +172,58 @@
     <script>
         // Sample JavaScript code for populating the table dynamically
         document.addEventListener('DOMContentLoaded', function () {
+            fetch('/room_prices')
+                .then(response => response.json())
+                .then(data => {
+                    const roomTable = document.getElementById('roomTable');
 
-            const roomData = [
-                { type: 'BOUTIQUE ROOM', price: '100' },
-                { type: 'EXECUTIVE DOUBLE', price: '150' },
-                { type: 'FAMILY SUITE', price: '200' },
-                { type: 'EXECUTIVE TWIN', price: '200' },
-                { type: 'PREMIER TWIN', price: '200' },
-                { type: 'GRAND SUITE', price: '200' },
-                // Add more data as needed
-            ];
-
-            const roomTable = document.getElementById('roomTable');
-
-            // Loop through the data and create rows for room table
-            roomData.forEach(data => {
-                const row = roomTable.insertRow();
-                row.innerHTML = `
-                    <td>${data.type}</td>
-                    <td id="price-${data.type}">${data.price}</td>
-                    <td class="action-buttons">
-                        <button class="edit-button" data-type="${data.type}" onclick="editRoom('${data.type}')">Edit</button>
-                    </td>
-                `;
-            });
+                    data.roomData.forEach(item => {
+                        const row = roomTable.insertRow();
+                        row.innerHTML = `
+        <td>${item.room_type_name}</td>
+        <td id="price-${item.room_type_name}">BDT ${item.price_per_night}</td>
+        <td class="action-buttons">
+            <button class="edit-button" data-type="${item.room_type_name}" onclick="editRoom('${item.room_type_name}')">Edit</button>
+        </td>
+    `;
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching room data:', error);
+                });
         });
 
         function editRoom(roomType) {
             const priceCell = document.getElementById(`price-${roomType}`);
             const currentPrice = priceCell.innerText.replace("BDT", '');
             const newPrice = prompt(`Enter new price for ${roomType}:`, currentPrice);
+
             if (newPrice !== null) {
+                // Update the frontend display immediately
                 priceCell.innerText = `BDT ${newPrice}`;
+
+                // Send API request to update the price in the database
+                fetch('/update_room_price', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ roomType, newPrice }),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+
+                        // Redirect to the front page
+                        window.location.href = "/";
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Handle error appropriately (e.g., show a message to the user)
+                    });
             }
         }
+
         function confirmAction() {
             // Implement your logic when the "Confirm" button is clicked
             console.log("Confirm button clicked.");
