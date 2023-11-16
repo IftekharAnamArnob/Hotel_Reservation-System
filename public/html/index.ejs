@@ -61,26 +61,27 @@
         <style>
             .button-container {
                 display: flex;
+                justify-content: center; 
             }
             
-          
-
-
-            
-
-
+      
             /* Add these styles to your existing CSS file */
 
             .cancel-button {
-                display: inline-block;
-                background-color: #e72412;
-                color: white;
-                padding: 10px 20px;
-                text-align: center;
-                text-decoration: none;
-                font-size: 16px;
-                border-radius: 5px;
-                transition: background-color 0.3s ease;
+                 /* Your button styles */
+        font-size: 16px;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: #f0f0f0;
+        color: #333;
+        border: 2px solid #ccc;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin-right: 10px; /* Space between buttons */
+
+                transition: background-color cubic-bezier(0.075, 0.82, 0.165, 1);
             }
 
             .cancel-button:hover {
@@ -114,17 +115,13 @@
                 transform: scale(1.05);
                 border-color: #ffd700;
             }
+            .cancel-form,
+    .check-reservation-form {
+        margin: 0;
+    }
         </style>
 
-        <div class="button-container">
-            <form method="GET">
-                <a class="custom-button" href="/registration">Sign up</a>
-            </form>
-
-            <form method="GET">
-                <a class="custom-button" href="/login">Login</a>
-            </form>
-        </div>
+      
 
 
 
@@ -244,9 +241,40 @@
         }
     </script>
     
-    <form action="/cancel_book" method="get">
-        <button type="submit" name="action" value="cancelBooking">Cancel Booking</button>
-    </form>
+    <div class="button-container">
+        <form action="/cancel_book" method="get" class="cancel-form">
+            <button type="submit" name="action" value="cancelBooking" class="cancel-button" style="color: black;">Cancel Booking</button>
+        </form>
+        <form action="/check_reservation" method="post" class="check-reservation-form">
+            <button type="button" name="action" value="checkReservation" class="check-reservation-button" onclick="getReservationID()"style="background-color: greenyellow;color: black; ">Check Reservation</button>
+        </form>
+    </div>
+
+
+    <script>
+        function getReservationID() {
+            var reservationID = prompt("Please enter your reservation ID:");
+    
+            if (reservationID !== null) {
+                if (reservationID.trim() !== "") {
+                    alert("Entered reservation ID: " + reservationID);
+                    // Perform further actions or form submission with this reservation ID
+                } else {
+                    alert("Please enter a reservation ID!");
+                    getReservationID(); // If user submits empty, prompt again
+                }
+            }
+        }
+    </script>
+    
+    
+    
+    
+    
+    
+   
+
+    
 
     <section class="rooms sec-width" id="rooms">
         <div class="title">

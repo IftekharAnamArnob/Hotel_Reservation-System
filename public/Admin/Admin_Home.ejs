@@ -61,9 +61,20 @@
             
         </ul>
         <!-- <button class = "btn sign-up">sign up</button> -->
+     
+        <div class="button-container">
+            <form method="GET">
+                <a class="custom-button" href="admin_registration.ejs">Sign up</a>    <!-- Need a rendering here  -->
+            </form>
+
+            <form method="GET">
+                <a class="custom-button" href="admin_login.ejs">Login</a>      <!-- Need a rendering here  -->
+            </form>
+        </div>
         <style>
             .button-container {
                 display: flex;
+                justify-content: space-between;
             }
 
 
@@ -98,7 +109,7 @@
                 border: 2px solid #ffd700;
                 transition: all 0.3s ease;
                 cursor: pointer;
-                margin-right: 20px;
+                margin-right: 40px;
                 /* Adds space between buttons */
             }
 
