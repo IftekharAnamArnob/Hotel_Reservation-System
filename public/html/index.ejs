@@ -212,33 +212,41 @@
     </section>
 
 
-    <form action="/room_availability" method="get">
-        
+    <form action="/room_availability" method="get" onsubmit="return validateDates()">
         <label for="checkin-date">Check-In Date:</label>
-        <input type="date" name="checkin-date" required />
-        
+        <input type="date" id="checkin-date" name="checkin-date" required />
         
         <label for="checkout-date">Check-Out Date:</label>
-        <input type="date" name="checkout-date" required />
-
-        <button type="submit">Find Rooms</button>
+        <input type="date" id="checkout-date" name="checkout-date" required />
     
+        <button type="submit">Find Rooms</button>
     </form>
+
+    <script>
+        function validateDates() {
+            const checkinDate = new Date(document.getElementById('checkin-date').value);
+            const checkoutDate = new Date(document.getElementById('checkout-date').value);
+            const today = new Date();
+    
+            // Check if check-in and check-out dates are later or equal to today
+            if (checkinDate < today || checkoutDate < today) {
+                alert("Please select dates later or equal to today.");
+                return false;
+            }
+    
+            // Check if check-in date is before the check-out date
+            if (checkinDate >= checkoutDate) {
+                alert("Check-out date should be after the check-in date.");
+                return false;
+            }
+    
+            return true; // Submits the form if all conditions are met
+        }
+    </script>
     
     <form action="/cancel_book" method="get">
         <button type="submit" name="action" value="cancelBooking">Cancel Booking</button>
     </form>
-
-    <!-- <script>
-        // Get today's date in the format "YYYY-MM-DD"
-        const today = new Date().toISOString().split('T')[0];
-    
-        // Set the min attribute for the check-in date input
-        document.getElementById('checkin-date').min = today;
-    
-        // Set the min attribute for the check-out date input
-        document.getElementById('checkout-date').min = today;
-    </script> -->
 
     <section class="rooms sec-width" id="rooms">
         <div class="title">
