@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+  
+    <link rel="stylesheet" href="/public/css/registration.css">
+</head>
+
+<body>
+    <div class="container">
+        <form class="registration-form" action="/submit_registration" method="POST" onsubmit="return validatePasswords()">
+            <h2>Create an account</h2>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            
+            <label for="admin_type">Designation:</label>
+            <input type="text" id="admin_type" name="admin_type" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="password">Password:</label>
+            <input type="text" id="password" name="password" required>
+
+            <label for="confirm-password">Confirm Password:</label>
+            <input type="text" id="confirm-password" name="confirm-password" required>
+
+            <button type="submit">Create Account</button>
+            
+            <form method="GET">
+                <a class="custom-button" href="/">Log In</a>
+            </form>
+        </form>
+
+        <script>
+            function validatePasswords() {
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+        
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match");
+                    return false;
+                }
+        
+                return true;
+            }
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Noorjahan Grand - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('/public/images/grand_ball.jpg'); /* Replace 'background.jpg' with your image file name and path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This keeps the background image fixed while scrolling */
+    color: white; /* Set text color to contrast with the background */
+    font-family: Arial, sans-serif; /* Set the font family for the text */
+        }
+
+        .login-container {
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-btn {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+
+        .options {
+            margin-top: 20px;
+        }
+
+        .options span {
+            margin-right: 10px;
+        }
+
+        .options a {
+            text-decoration: none;
+    color: #66ff66; /* Adjust the color to make it brighter */
+    font-weight: bold;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2>Hotel Noorjahan Grand - Admin Login</h2>
+        <form action="/admin_login" method="post">
+            <div class="input-group">
+                <input type="text" placeholder="Email" name="email" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        
+        
+        <div class="options">
+            <div method="GET">
+                <form method="GET">
+                    <a class="custom-button" href="/admin_registration">Create new account</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
