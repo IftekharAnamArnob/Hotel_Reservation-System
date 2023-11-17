@@ -245,12 +245,12 @@
         <form action="/cancel_book" method="get" class="cancel-form">
             <button type="submit" name="action" value="cancelBooking" class="cancel-button" style="color: black;">Cancel Booking</button>
         </form>
-        <form action="/check_reservation" method="post" class="check-reservation-form">
-            <button type="button" name="action" value="checkReservation" class="check-reservation-button" onclick="getReservationID()"style="background-color: greenyellow;color: black; ">Check Reservation</button>
+        <form action="/store_reservation" method="post" class="check-reservation-form" id="reservationForm">
+            <button type="button" name="action" value="checkReservation" class="check-reservation-button" onclick="getReservationID()" style="background-color: greenyellow;color: black; ">Check Reservation</button>
+            <input type="hidden" id="reservationIDInput" name="reservationID">
         </form>
     </div>
-
-
+    
     <script>
         function getReservationID() {
             var reservationID = prompt("Please enter your reservation ID:");
@@ -258,14 +258,39 @@
             if (reservationID !== null) {
                 if (reservationID.trim() !== "") {
                     alert("Entered reservation ID: " + reservationID);
-                    // Perform further actions or form submission with this reservation ID
+                    sendReservationID(reservationID); // Send reservation ID to the server
                 } else {
                     alert("Please enter a reservation ID!");
                     getReservationID(); // If user submits empty, prompt again
                 }
             }
         }
+    
+        function sendReservationID(reservationID) {
+            var form = document.getElementById("reservationForm");
+            var input = document.getElementById("reservationIDInput");
+            input.value = reservationID;
+    
+            fetch('/store_reservation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(new FormData(form)).toString(),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Reservation ID sent successfully');
+                } else {
+                    console.error('Failed to send reservation ID');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
     </script>
+    
     
     
     

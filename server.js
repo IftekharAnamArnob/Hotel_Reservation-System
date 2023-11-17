@@ -2,6 +2,7 @@ const db = require('./database');
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 6969;
@@ -18,6 +19,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public/html');
+// app.set('views', path.join(__dirname, 'views'));
+
 
 app.use(express.static(__dirname, + '/public/script.js'))
 app.use("/public/css", express.static(__dirname + '/public/css/'));
@@ -149,8 +152,10 @@ app.get('/apply_book', (req, res) => {
                                     email: email,
                                     checkInDate: requestedCheckinDate,
                                     checkOutDate: requestedCheckoutDate,
-                                    reservationStatus: reservationStatus, // Replace with the actual reservation status
+                                    reservationStatus: reservationStatus,
                                 };
+
+                                console.log(bookingData);
 
                                 res.render('apply_success', { bookingData });
                             }
@@ -218,6 +223,63 @@ app.post('/confirm_cancellation', (req, res) => {
         }
     });
 
+});
+
+app.post('/store_reservation', (req, res) => {
+    const reservationId = req.body.reservationID;
+    console.log('Received reservation ID: ', reservationId);
+
+    const sql = `SELECT reservation_id, guest_id, check_in_date, check_out_date, reservation_status FROM reservation WHERE reservation_id = ?`;
+    
+    db.query(sql, [reservationId], (err, result1) => {
+        if(err) {
+            console.log('Failed to fetch Reservation data');
+        } else {
+            if(result1.length > 0) {
+                // console.log(`${result1[0].guest_id} ${result1[0].check_in_date} ${result1[0].check_out_date} ${result1[0].reservation_status}`);
+
+                const sql2 = `SELECT first_name, last_name, email FROM guest WHERE guest_id = ?`;
+
+                db.query(sql2, [result1[0].guest_id], (err2, result2) => {
+                    if(err2) {
+                        console.log('Failed to fetch Guest Data');
+                    } else {
+                        if(result2.length > 0) {
+                            console.log('Successfully fetched guest data');
+
+                            const reservationId1 = result1[0].reservation_id;
+                            const firstName = result2[0].first_name;
+                            const lastName = result2[0].last_name;
+                            const email = result2[0].email;
+                            const checkInDate = result1[0].check_in_date.toISOString().split('T')[0];
+                            const checkOutDate = result1[0].check_out_date.toISOString().split('T')[0];
+                            const reservationStatus = result1[0].reservation_status;
+
+                            const bookingData = {
+                                reservationId: reservationId1,
+                                firstName: firstName,
+                                lastName: lastName,
+                                email: email,
+                                checkInDate: checkInDate,
+                                checkOutDate: checkOutDate,
+                                reservationStatus: reservationStatus,
+                            };
+
+                            console.log(bookingData);
+                            res.render('apply_success', { bookingData });
+                        } else {
+                            console.log('No such guest exists');
+                            res.redirect('/');
+                        }
+                    }
+                });
+
+            } else {
+                console.log('No such reservation exists');
+                res.redirect('/');
+            }
+        }
+    });
 });
 
 
