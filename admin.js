@@ -184,6 +184,24 @@ app.get('/rooms', (req, res) => {
     res.render('Admin_Room');
 });
 
+app.get('/guest_detail/:guest_id', (req, res) => {
+    const guestId = req.params.guest_id;
+    // console.log(guestId);
+    const sql = `SELECT * FROM guest WHERE guest_id = ?`;
+
+    db.query(sql, [guestId], (err, result) => {
+        if(err) {
+            console.log('Error loading guest details');
+            res.status(500).json({ error: 'Error loading guest details' });
+        } else {
+            res.json({ guestDetails: result });
+        }
+    });
+});
+
+
+
+
 app.listen(port, () => {
     console.log(`Listening to port ${port}`);
 });

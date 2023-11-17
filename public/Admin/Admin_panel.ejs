@@ -299,8 +299,11 @@
                         <%= data.reservation_id %>
                     </td>
                     <td>
-                        <%= data.guest_id %>
+                        <a href="/guest_detail/<%= data.guest_id %>" method="get">
+                            <%= data.guest_id %>
+                        </a>
                     </td>
+                    
                     <td>
                         <%= data.check_in_date.toLocaleDateString() %>
                     </td>
