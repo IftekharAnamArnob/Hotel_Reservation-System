@@ -46,7 +46,7 @@ app.post('/admin_login', (req, res) => {
 });
 
 function authenticateUser(email, password, callback) {
-    const sql = 'SELECT * FROM admin WHERE email = ? AND user_password = ?';
+    const sql = 'SELECT * FROM admin_data WHERE email = ? AND user_password = ?';
     db.query(sql, [email, password], (err, results) => {
       if (err) {
         callback(err, null);
@@ -70,7 +70,7 @@ app.get('/admin_registration', (req, res) => {
 app.post('/submit_registration', (req, res) => {
     const { firstName, lastName, admin_type, email, phone, password } = req.body;
 
-    const insertQuery = 'INSERT INTO admin (first_name, last_name, admin_type, email, phone, user_password) VALUES (?, ?, ?, ?, ?, ?)';
+    const insertQuery = 'INSERT INTO admin_data (first_name, last_name, admin_type, email, phone, user_password) VALUES (?, ?, ?, ?, ?, ?)';
     db.query(insertQuery, [firstName, lastName, admin_type, email, phone, password], (err, result) => {
         if (err) {
             console.error('Error inserting admin registration:', err);
