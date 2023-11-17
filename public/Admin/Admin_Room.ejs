@@ -215,7 +215,7 @@
                         console.log('Success:', data);
 
                         // Redirect to the front page
-                        window.location.href = "/";
+                        window.location.href = "/home";
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -235,6 +235,7 @@
             if (result) {
                 alert("You clicked OK!");
                 // Perform the action you want to take on OK
+                window.location.href = "/home";
             } else {
                 alert("You clicked Cancel!");
                 // Perform the action you want to take on Cancel

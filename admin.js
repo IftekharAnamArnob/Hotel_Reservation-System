@@ -174,7 +174,8 @@ app.post('/update_room_price', (req, res) => {
             res.status(500).json({ error: 'Internal Server Error' });
         } else {
             console.log('Room price updated successfully.');
-            res.json({ success: true });
+            // res.json({ success: true });
+            res.redirect('/home');
         }
     });
 });
