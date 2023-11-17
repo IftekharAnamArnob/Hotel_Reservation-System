@@ -30,22 +30,32 @@ app.use("/public/images", express.static(__dirname + '/public/images/'));
 let available = [];
 var requestedCheckinDate = 'NULL';
 var requestedCheckoutDate = 'NULL';
-
+var prices = new Map();
 app.get('/', (req, res) => {
     available.length = 0;
     console.log("Hello Home");
-    res.render('index');
+
+    const sql = `SELECT price_per_night FROM room_type`;
+
+    db.query(sql, (err, result) => {
+        if(err) {
+            console.log('Failed to load Home page');
+        } else {
+            prices = result.map(row => row.price_per_night);
+            res.render('index', { prices });
+        }
+    });
 });
 
-app.get('/login', (req, res) => {
-    console.log("Hello login");
-    res.sendFile(__dirname + '/public/html/login.html');
-});
+// app.get('/login', (req, res) => {
+//     console.log("Hello login");
+//     res.sendFile(__dirname + '/public/html/login.html');
+// });
 
-app.get('/registration', (req, res) => {
-    console.log("Hello registration");
-    res.sendFile(__dirname + '/public/html/registration.html');
-});
+// app.get('/registration', (req, res) => {
+//     console.log("Hello registration");
+//     res.sendFile(__dirname + '/public/html/registration.html');
+// });
 
 app.get('/room_availability', (req, res) => {
     available.length = 0;
@@ -71,7 +81,7 @@ app.get('/room_availability', (req, res) => {
 
         if (completedQueries === queryCount) {
             console.log(available);
-            res.render('room_availability', { available: available });
+            res.render('room_availability', { available: available, prices : prices });
         }
     };
 
