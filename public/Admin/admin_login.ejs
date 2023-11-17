@@ -13,7 +13,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: url('/public/images/grand_ball.jpg'); /* Replace 'background.jpg' with your image file name and path */
+            background-image: url('/public/images/Hotel2.jpg'); /* Replace 'background.jpg' with your image file name and path */
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed; /* This keeps the background image fixed while scrolling */
@@ -50,10 +50,12 @@
             font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
+            transition: transform 0.3s ease-in-out;
         }
 
         .login-btn:hover {
             background-color: #45a049;
+            transform: scale(1.2);
         }
 
         .options {
@@ -63,6 +65,7 @@
         .options span {
             margin-right: 10px;
         }
+       
 
         .options a {
             text-decoration: none;
@@ -70,12 +73,73 @@
     font-weight: bold;
             
         }
+        .login-header {
+            background-color:black;
+            padding: 5px;
+            border-radius: 5px;
+            display: inline;
+        }
+        .wavey{
+    position: relative;
+    
+}
+.wavey span
+{
+    position: relative;
+    display: inline-block;
+    color: wheat;
+    font-size: 2em;
+    text-transform: uppercase;
+    animation: animate 1s ease-in-out infinite;
+    animation-delay: calc(0.05s * var(--i));
+
+}
+.welcome-text {
+            text-align: center;
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            color: wheat;
+        }
+
+@keyframes animate
+{
+    0%
+    {
+        transform: translateY(0px);
+    }
+    20%
+    {
+        transform: translateY(-20px);
+    }
+    40%,100%
+    {
+        transform: translateY(0px);
+    }
+}
+
     </style>
 </head>
 
 <body>
+    <div class="welcome-text">
+    <div class="wavey">
+        <span style="--i:1;">W</span>
+        <span style="--i:2;">e</span>
+        <span style="--i:3;">l</span>
+        <span style="--i:4;">c</span>
+        <span style="--i:5;">o</span>
+        <span style="--i:6;">m</span>
+        <span style="--i:7;">e</span>
+        <span style="--i:8;"></span>
+        <span style="--i:9;"></span>
+        <span style="--i:10;"></span>
+            
+        
+      </div>
+    </div>
     <div class="login-container">
-        <h2>Hotel Noorjahan Grand - Admin Login</h2>
+        <h2><span class="login-header" style="color: wheat;">Hotel Noorjahan Grand - Admin Login</span></h2>
         <form action="/admin_login" method="post">
             <div class="input-group">
                 <input type="text" placeholder="Email" name="email" required>
@@ -98,3 +162,4 @@
 </body>
 
 </html>
+ 
