@@ -106,26 +106,21 @@ app.get('/bookings', (req, res) => {
 app.post('/updateBookings', (req, res) => {
     const { approved, rejected } = req.body;
 
-    // Constructing the SQL update query
     let updateQuery = `
         UPDATE reservation
         SET reservation_status = CASE
     `;
 
-    // Adding conditions for approved bookings
     if (approved.length > 0) {
         updateQuery += `WHEN reservation_id IN (${approved.join(',')}) THEN 'approved'\n`;
     }
 
-    // Adding conditions for rejected bookings
     if (rejected.length > 0) {
         updateQuery += `WHEN reservation_id IN (${rejected.join(',')}) THEN 'rejected'\n`;
     }
 
-    // Adding the default condition to keep the existing status
     updateQuery += 'ELSE reservation_status\nEND;';
 
-    // Executing the update query
     db.query(updateQuery, (err, result) => {
         if (err) {
             console.error('Error updating bookings:', err);
