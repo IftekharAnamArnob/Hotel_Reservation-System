@@ -182,7 +182,6 @@ app.get('/rooms', (req, res) => {
 
 app.get('/guest_detail/:guest_id', (req, res) => {
     const guestId = req.params.guest_id;
-    // console.log(guestId);
     const sql = `SELECT * FROM guest WHERE guest_id = ?`;
 
     db.query(sql, [guestId], (err, result) => {
@@ -190,7 +189,12 @@ app.get('/guest_detail/:guest_id', (req, res) => {
             console.log('Error loading guest details');
             res.status(500).json({ error: 'Error loading guest details' });
         } else {
-            res.json({ guestDetails: result });
+            if (result.length > 0) {
+                const guestDetails = result[0]; // Assuming the query returns one guest detail row
+                res.render('guest_details', { guestDetails }); // Pass guestDetails to the EJS template
+            } else {
+                res.status(404).json({ error: 'Guest not found' });
+            }
         }
     });
 });

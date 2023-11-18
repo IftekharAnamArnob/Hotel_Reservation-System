@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guest Details</title>
+  <link rel="stylesheet">
+</head>
+<style>
+
+
+body {
+    
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: skyblue;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.guest-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.guest-card img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.details {
+  line-height: 1.6;
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+.details strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+/* Your existing CSS styles */
+/* ... */
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  /* Additional styling as needed */
+}
+
+
+
+
+</style>
+<body>
+  <div class="container">
+    <h1>Guest Details</h1>
+    <div class="guest-card">
+      
+      <div class="details">
+        <p><strong>First Name:</strong> <%= guestDetails.first_name %> </p>
+        <p><strong>First Name:</strong> <%= guestDetails.last_name %> </p>
+        <p><strong>Age:</strong> <%= guestDetails.age %> </p>
+        <p><strong>NID Number:</strong> <%= guestDetails.nid_no %> </p>
+        <p><strong>Passport Number:</strong> <%= guestDetails.passport_no %> </p>
+        <p><strong>Occupation:</strong> <%= guestDetails.occupation %> </p>
+        <p><strong>Contact Number:</strong> <%= guestDetails.contact_no %> </p>
+        <p><strong>Email:</strong> <%= guestDetails.email %> </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
